@@ -53,6 +53,7 @@
     <Compile Include="Entities\Deadline.cs" />
     <Compile Include="Entities\Hometask.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
