@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAssistant.TelegramB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAssistant.Database", "LearningAssistant.Database\LearningAssistant.Database.csproj", "{2441E834-FDDD-4D4C-8901-319D69F026E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAssistant.DatabaseTests", "LearningAssistant.DatabaseTests\LearningAssistant.DatabaseTests.csproj", "{FF11F016-9C8F-45C1-B25F-FF4398238EEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2441E834-FDDD-4D4C-8901-319D69F026E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2441E834-FDDD-4D4C-8901-319D69F026E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2441E834-FDDD-4D4C-8901-319D69F026E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF11F016-9C8F-45C1-B25F-FF4398238EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF11F016-9C8F-45C1-B25F-FF4398238EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF11F016-9C8F-45C1-B25F-FF4398238EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF11F016-9C8F-45C1-B25F-FF4398238EEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

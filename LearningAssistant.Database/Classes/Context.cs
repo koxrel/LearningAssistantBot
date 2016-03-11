@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using LearningAssistant.Database.Entities;
 
-namespace LearningAssistant.Database
+namespace LearningAssistant.Database.Classes
 {
     public class Context : DbContext
     {
