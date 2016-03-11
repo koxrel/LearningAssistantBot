@@ -59,7 +59,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Info.resx</DependentUpon>
     </Compile>
-    <Compile Include="Interface1.cs" />
     <Compile Include="Migrations\201603011016078_Initial.cs" />
     <Compile Include="Migrations\201603011016078_Initial.Designer.cs">
       <DependentUpon>201603011016078_Initial.cs</DependentUpon>
