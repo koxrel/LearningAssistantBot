@@ -54,6 +54,24 @@ namespace LearningAssistant.Database
             _db.SaveChanges();
         }
 
+        public async void AddHometask(Hometask hometask)
+        {
+            _db.Hometasks.Add(hometask);
+            await _db.SaveChangesAsync();
+        }
+
+        public async void AddDeadline(Deadline deadline)
+        {
+            _db.Deadlines.Add(deadline);
+            await _db.SaveChangesAsync();
+        }
+
+        public async void AddUser(User user)
+        {
+            _db.Users.Add(user);
+            await _db.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             _db.Dispose();
