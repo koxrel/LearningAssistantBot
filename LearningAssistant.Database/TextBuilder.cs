@@ -7,9 +7,10 @@ using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant.Database
 {
-    public class TextBuilder
+    //The class and all its methods are made static since they do not rely on state
+    public static class TextBuilder
     {
-        public string SummarizeDeadlines(IEnumerable<Deadline> deadlines)
+        public static string SummarizeDeadlines(IEnumerable<Deadline> deadlines)
         {
             IEnumerable<Deadline> deadlinesEnumerated = deadlines?.ToArray();
             if (deadlinesEnumerated == null || !deadlinesEnumerated.Any())
@@ -25,7 +26,7 @@ namespace LearningAssistant.Database
             return sb.ToString();
         }
 
-        public string SummarizeHometask(Hometask hometask)
+        public static string SummarizeHometask(Hometask hometask)
         {
             return hometask?.ToString() ?? Info.NotFound;
         }

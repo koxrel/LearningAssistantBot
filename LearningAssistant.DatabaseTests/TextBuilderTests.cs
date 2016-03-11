@@ -15,24 +15,18 @@ namespace LearningAssistant.Database.Tests
         [TestMethod()]
         public void SummarizeDeadlines_Should_Return_Not_Found_On_Empty_Sequence_Test()
         {
-            var text = new TextBuilder();
-
-            Assert.AreEqual("Не найдено", text.SummarizeDeadlines(new List<Deadline>()));
+            Assert.AreEqual("Не найдено", TextBuilder.SummarizeDeadlines(new List<Deadline>()));
         }
 
         [TestMethod()]
         public void SummarizeDeadlines_Should_Return_Not_Found_On_Null_Test()
         {
-            var text = new TextBuilder();
-
-            Assert.AreEqual("Не найдено", text.SummarizeDeadlines(null));
+            Assert.AreEqual("Не найдено", TextBuilder.SummarizeDeadlines(null));
         }
 
         [TestMethod()]
         public void SummarizeDeadlines_Test()
         {
-            var text = new TextBuilder();
-
             var deadlines = new List<Deadline>
             {
                 new Deadline
@@ -53,22 +47,18 @@ namespace LearningAssistant.Database.Tests
 
             string rightCompare = $"Крайние сроки сдачи работ:\n{deadlines[0]}\n{deadlines[1]}\n";
 
-            Assert.AreEqual(rightCompare, text.SummarizeDeadlines(deadlines));
+            Assert.AreEqual(rightCompare, TextBuilder.SummarizeDeadlines(deadlines));
         }
 
         [TestMethod()]
-        public void SummarizeHometask_Return_Not_Found_On_Null_Test()
+        public void SummarizeHometask_Should_Return_Not_Found_On_Null_Test()
         {
-            var text = new TextBuilder();
-
-            Assert.AreEqual("Не найдено", text.SummarizeHometask(null));
+            Assert.AreEqual("Не найдено", TextBuilder.SummarizeHometask(null));
         }
 
         [TestMethod()]
         public void SummarizeHometask_Test()
         {
-            var text = new TextBuilder();
-
             var hometask = new Hometask
             {
                 Description = "Exercises 8, 9, 10",
@@ -77,7 +67,7 @@ namespace LearningAssistant.Database.Tests
                 Subject = "InfoTech"
             };
 
-            Assert.AreEqual(hometask.ToString(), text.SummarizeHometask(hometask));
+            Assert.AreEqual(hometask.ToString(), TextBuilder.SummarizeHometask(hometask));
         }
     }
 }
