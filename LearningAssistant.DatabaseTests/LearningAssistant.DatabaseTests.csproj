@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDataAccessTests.cs" />
+    <Compile Include="TextBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearningAssistant.Database\LearningAssistant.Database.csproj">

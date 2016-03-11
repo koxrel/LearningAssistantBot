@@ -11,9 +11,8 @@ namespace LearningAssistant.Database
     {
         public string SummarizeDeadlines(IEnumerable<Deadline> deadlines)
         {
-            IEnumerable<Deadline> deadlinesEnumerated = deadlines as Deadline[] ?? deadlines.ToArray();
-
-            if (!deadlinesEnumerated.Any())
+            IEnumerable<Deadline> deadlinesEnumerated = deadlines?.ToArray();
+            if (deadlinesEnumerated == null || !deadlinesEnumerated.Any())
                 return Info.NotFound;
 
             var sb = new StringBuilder();
