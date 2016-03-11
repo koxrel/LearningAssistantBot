@@ -20,5 +20,10 @@ namespace LearningAssistant.Database
             }
             return sb.ToString();
         }
+
+        public string SummarizeHometask(Hometask hometask)
+        {
+            return hometask?.ToString() ?? Info.NotFound;
+        }
     }
 }

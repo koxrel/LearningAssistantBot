@@ -24,19 +24,18 @@ namespace LearningAssistant.Database
             return _db.Deadlines;
         }
 
-        public string GetCurrentIeltsHometask()
+        public Hometask GetCurrentIeltsHometask()
         {
             return _db.Hometasks
                 .OrderBy(h => h.DueDate)
-                .FirstOrDefault(h => h.Subject == "IELTS" && h.DueDate > DateTime.Now)
-                ?.ToString() ?? Info.NotFound;
+                .FirstOrDefault(h => h.Subject == "IELTS" && h.DueDate > DateTime.Now);
         }
 
         public Hometask GetCurrentInfoTechHometask()
         {
             return _db.Hometasks
                 .OrderBy(h => h.DueDate)
-                .FirstOrDefault(h => h.Subject == "InfoTech" && h.DueDate > DateTime.Now)
+                .FirstOrDefault(h => h.Subject == "InfoTech" && h.DueDate > DateTime.Now);
         }
 
         public IEnumerable<Hometask> GetHomeTasks()
