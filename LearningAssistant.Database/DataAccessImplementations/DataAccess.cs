@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
+using LearningAssistant.Database.Interfaces;
 
-namespace LearningAssistant.Database
+namespace LearningAssistant.Database.DataAccessImplementations
 {
-    public class DataAccess : IDisposable
+    public class DataAccess : IDisposable, IDataAccess
     {
         private readonly Context _db = new Context();
 
