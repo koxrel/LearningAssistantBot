@@ -43,17 +43,6 @@ namespace LearningAssistant.Database
             return _db.Hometasks;
         }
 
-        public void RemoveOldRecords()
-        {
-            var oldDeadlines = _db.Deadlines.Where(d => d.DueDate < DateTime.Now);
-            _db.Deadlines.RemoveRange(oldDeadlines);
-
-            var oldHometasks = _db.Hometasks.Where(d => d.DueDate < DateTime.Now);
-            _db.Hometasks.RemoveRange(oldHometasks);
-
-            _db.SaveChanges();
-        }
-
         public async void AddHometask(Hometask hometask)
         {
             _db.Hometasks.Add(hometask);
@@ -69,6 +58,17 @@ namespace LearningAssistant.Database
         public async void AddUser(User user)
         {
             _db.Users.Add(user);
+            await _db.SaveChangesAsync();
+        }
+
+        public async void RemoveOldRecords()
+        {
+            var oldDeadlines = _db.Deadlines.Where(d => d.DueDate < DateTime.Now);
+            _db.Deadlines.RemoveRange(oldDeadlines);
+
+            var oldHometasks = _db.Hometasks.Where(d => d.DueDate < DateTime.Now);
+            _db.Hometasks.RemoveRange(oldHometasks);
+
             await _db.SaveChangesAsync();
         }
 
