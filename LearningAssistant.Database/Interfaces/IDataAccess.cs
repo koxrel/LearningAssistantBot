@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LearningAssistant.Database.Entities;
 
-namespace LearningAssistant.Database
+namespace LearningAssistant.Database.Interfaces
 {
     public interface IDataAccess
     {

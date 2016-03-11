@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
-    <Compile Include="DataAccess.cs" />
+    <Compile Include="Classes\Context.cs" />
+    <Compile Include="DataAccessImplementations\DataAccess.cs" />
     <Compile Include="Entities\Deadline.cs" />
     <Compile Include="Entities\Hometask.cs" />
     <Compile Include="Entities\User.cs" />
@@ -66,7 +66,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextBuilder.cs" />
+    <Compile Include="Classes\TextBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
