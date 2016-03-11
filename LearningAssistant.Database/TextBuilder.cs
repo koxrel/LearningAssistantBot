@@ -11,11 +11,16 @@ namespace LearningAssistant.Database
     {
         public string SummarizeDeadlines(IEnumerable<Deadline> deadlines)
         {
+            IEnumerable<Deadline> deadlinesEnumerated = deadlines as Deadline[] ?? deadlines.ToArray();
+
+            if (!deadlinesEnumerated.Any())
+                return Info.NotFound;
+
             var sb = new StringBuilder();
             sb.Append("Крайние сроки сдачи работ:\n");
-            foreach (var assign in deadlines)
+            foreach (var deadline in deadlinesEnumerated)
             {
-                sb.Append(assign);
+                sb.Append(deadline);
                 sb.Append('\n');
             }
             return sb.ToString();
