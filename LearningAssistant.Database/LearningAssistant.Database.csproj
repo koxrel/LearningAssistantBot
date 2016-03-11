@@ -50,21 +50,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Entities\Deadline.cs" />
     <Compile Include="Entities\Hometask.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Info.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Info.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201603011016078_Initial.cs" />
     <Compile Include="Migrations\201603011016078_Initial.Designer.cs">
       <DependentUpon>201603011016078_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataAccess.cs" />
+    <Compile Include="TextBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Info.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Info.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603011016078_Initial.resx">
       <DependentUpon>201603011016078_Initial.cs</DependentUpon>
     </EmbeddedResource>
