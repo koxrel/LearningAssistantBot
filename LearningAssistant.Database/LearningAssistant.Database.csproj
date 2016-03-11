@@ -59,12 +59,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Info.resx</DependentUpon>
     </Compile>
+    <Compile Include="Interface1.cs" />
     <Compile Include="Migrations\201603011016078_Initial.cs" />
     <Compile Include="Migrations\201603011016078_Initial.Designer.cs">
       <DependentUpon>201603011016078_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataAccess.cs" />
+    <Compile Include="TextBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -7,7 +7,7 @@ using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant.Database
 {
-    public class DataAccess: IDisposable
+    public class DataAccess : IDisposable
     {
         private readonly Context _db = new Context();
 
