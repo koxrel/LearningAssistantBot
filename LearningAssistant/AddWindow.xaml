@@ -29,9 +29,8 @@
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="5,6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Summary module" VerticalAlignment="Top" Height="20" Width="95" Grid.Row="2"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="5,5,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="20" Width="95" Grid.Row="3"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="5,5,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Due date" VerticalAlignment="Top" Height="20" Width="95" Grid.Row="4"/>
-        <Button x:Name="AddButt" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="9,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Height="20"/>
-        <Button x:Name="CancelButt" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="119,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Height="20"/>
-        <RadioButton x:Name="DeadlineRB" Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="15" Width="66"/>
+        <Button x:Name="AddButton" Content="Add" FontSize="18"  Background="Beige"  Grid.Column="1" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" Height="30"/>
+        <RadioButton  x:Name="DeadlineRB" Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="15" Width="66"/>
         <RadioButton x:Name="HomeTaskRB" Content="Home task" Grid.Column="1" HorizontalAlignment="Left" Margin="108,5,0,0" VerticalAlignment="Top" Height="15" Width="76"/>
         <TextBox x:Name="SubjectBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
         <TextBox x:Name="SummaryBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
