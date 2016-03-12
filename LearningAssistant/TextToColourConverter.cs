@@ -13,19 +13,25 @@ namespace LearningAssistant
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value.ToString().ToLower())
+            if (value != null)
             {
-                case "active":
-                    return new SolidColorBrush(Colors.GreenYellow);
+                switch (value.ToString().ToLower())
+                {
+                    case "active":
+                        return new SolidColorBrush(Colors.GreenYellow);
 
-                case "inactive":
-                    return new SolidColorBrush(Colors.Red);
+                    case "inactive":
+                        return new SolidColorBrush(Colors.Red);
 
-                default:
-                    return new SolidColorBrush(Colors.Black);
+                    default:
+                        return new SolidColorBrush(Colors.Black);
 
+                }
             }
+            else
+                return new SolidColorBrush(Colors.Black);
         }
+
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
