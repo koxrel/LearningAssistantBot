@@ -14,14 +14,21 @@ namespace LearningAssistant
 
 
 
-        Navigator Nav = new Navigator();
+        Navigator _nav = new Navigator();
 
+        public ICommand ButtonStartClick { get; set; }
+
+        public void smth(object obj)
+        {
+
+        }
 
         public string Status { get; set; } = "active";
         
         public ViewModel()
         {
-           // Nav.NavigateTo("AdditionalWindow");
+            ButtonStartClick = new Command(smth);
+            _nav.NavigateTo("AdditionalWindow");
 
 
         }

@@ -36,7 +36,7 @@
         <TextBox x:Name="SubjectBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
         <TextBox x:Name="SummaryBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
         <TextBox x:Name="DescriptionBox" Grid.Column="1" HorizontalAlignment="Left" Height="43" Margin="3,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
-        <DatePicker Grid.Column="1" Text="Choose Date" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="135"/>
+        <DatePicker Grid.Column="1" Text="" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="135"></DatePicker>
 
     </Grid>
 </Window>

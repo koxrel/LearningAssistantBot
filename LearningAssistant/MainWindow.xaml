@@ -30,7 +30,7 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Button Name="StartButt" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <Button Name="StartButt" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="1" Command="{Binding ButtonStartClick}" VerticalAlignment="Top" Width="118"/>
         <Button Name="NextButt" Content="Next asignment" Grid.Column="1" HorizontalAlignment="Left" Margin="10,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
         <Button Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
         <TextBlock Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
