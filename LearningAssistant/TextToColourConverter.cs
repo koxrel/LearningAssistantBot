@@ -18,7 +18,7 @@ namespace LearningAssistant
                 switch (value.ToString().ToLower())
                 {
                     case "active":
-                        return new SolidColorBrush(Colors.GreenYellow);
+                        return new SolidColorBrush(Colors.Lime);
 
                     case "inactive":
                         return new SolidColorBrush(Colors.Red);
