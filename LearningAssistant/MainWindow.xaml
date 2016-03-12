@@ -9,11 +9,12 @@
 
     <Window.Resources>
         <local:ViewModel x:Key="MainViewModel"/>
-        
+        <local:TextToColourConverter x:Key="TextToColour"/>
+
     </Window.Resources>
 
     <Grid DataContext="{Binding Source={StaticResource MainViewModel}}">
-        
+
         <DockPanel LastChildFill='False'>
             <Menu DockPanel.Dock='Top' Margin="0,0,-135,0" Height="25">
                 <MenuItem Header='_Actions'>
@@ -34,6 +35,10 @@
         <Button Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
         <TextBlock Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
         <TextBlock Name="textBlock1" HorizontalAlignment="Left" Margin="85,105,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="label" Content="Bot name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,9,0,0" Grid.Row="1" Width="78"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="17,14,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Bot name:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="15,40,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Status:" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="StatusLabel" Foreground="{Binding Status, Converter={StaticResource TextToColour}}" Content="{Binding Status}" HorizontalAlignment="Left" Margin="80,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>
@@ -42,7 +47,7 @@
             <RowDefinition Height="40*"/>
             <RowDefinition Height="279*"/>
         </Grid.RowDefinitions>
-       
+
 
 
     </Grid>

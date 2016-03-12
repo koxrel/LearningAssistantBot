@@ -15,7 +15,7 @@ namespace LearningAssistant
 
         public Navigator()
         {
-            _dict.Add("AdditionalWindow", new NotMainWindow());
+            _dict.Add("AdditionalWindow", new AddWindow());
         }
 
         public void NavigateTo(string name)

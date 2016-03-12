@@ -12,25 +12,16 @@ namespace LearningAssistant
     class ViewModel : INotifyPropertyChanged
     {
 
-        
-        private string _TxtBx;
-        public string TxtBx
-        {
-            get { return _TxtBx; }
-            set
-            {
-                _TxtBx = value;
-                OnPropertyChanged("TxtBx");
-            }
-        }
+
 
         Navigator Nav = new Navigator();
+
+
+        public string Status { get; set; } = "active";
         
-
-
         public ViewModel()
         {
-            Nav.NavigateTo("AdditionalWindow");
+           // Nav.NavigateTo("AdditionalWindow");
 
 
         }

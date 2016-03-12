@@ -17,9 +17,9 @@ namespace LearningAssistant
     /// <summary>
     /// Логика взаимодействия для NotMainWindow.xaml
     /// </summary>
-    public partial class NotMainWindow : Window
+    public partial class AddWindow : Window
     {
-        public NotMainWindow()
+        public AddWindow()
         {
             InitializeComponent();
         }
