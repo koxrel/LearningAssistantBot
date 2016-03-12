@@ -23,10 +23,14 @@ namespace LearningAssistant
                 OnPropertyChanged("TxtBx");
             }
         }
+
+        Navigator Nav = new Navigator();
         
+
+
         public ViewModel()
         {
-
+            Nav.NavigateTo("AdditionalWindow");
 
 
         }
