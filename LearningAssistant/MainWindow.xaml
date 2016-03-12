@@ -31,13 +31,13 @@
             </Menu>
         </DockPanel>
         <Button Name="StartButt" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="1" Command="{Binding ButtonStartClick}" VerticalAlignment="Top" Width="118"/>
-        <Button Name="NextButt" Content="Next asignment" Grid.Column="1" HorizontalAlignment="Left" Margin="10,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
-        <Button Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <Button Name="NextButt" Content="Next assignment" Grid.Column="1" HorizontalAlignment="Left" Margin="10,81,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonNewAssignmentClick}" Width="118"/>
+        <Button Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonStopClick}" Width="118"/>
         <TextBlock Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
         <TextBlock Name="textBlock1" HorizontalAlignment="Left" Margin="85,105,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
-        <Label x:Name="label" Content="Bot name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,9,0,0" Grid.Row="1" Width="78"/>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="17,14,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Bot name:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="15,40,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Status:" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="NameLabel" Content="LearningAssistant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,9,0,0" Grid.Row="1" Width="125"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="17,14,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Bot name:" VerticalAlignment="Top"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="15,40,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Status:" VerticalAlignment="Top" Width="55"/>
         <Label x:Name="StatusLabel" Foreground="{Binding Status, Converter={StaticResource TextToColour}}" Content="{Binding Status}" HorizontalAlignment="Left" Margin="80,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>

@@ -17,19 +17,32 @@ namespace LearningAssistant
         Navigator _nav = new Navigator();
 
         public ICommand ButtonStartClick { get; set; }
+        public ICommand ButtonStopClick { get; set; }
+        public ICommand ButtonNewAssignmentClick { get; set; }
 
-        public void smth(object obj)
+
+        public void StartBut(object obj)
         {
 
+        }
+
+        public void StopBut(object obj)
+        {
+
+        }
+
+        public void NABut(object obj)
+        {
+            _nav.NavigateTo("AdditionalWindow");
         }
 
         public string Status { get; set; } = "active";
         
         public ViewModel()
         {
-            ButtonStartClick = new Command(smth);
-            _nav.NavigateTo("AdditionalWindow");
-
+            ButtonStartClick = new Command(StartBut);
+            ButtonStopClick = new Command(StopBut);
+            ButtonNewAssignmentClick = new Command(NABut);
 
         }
         public event PropertyChangedEventHandler PropertyChanged;
