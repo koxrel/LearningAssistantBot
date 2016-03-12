@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Navigator.cs" />
     <Compile Include="NotMainWindow.xaml.cs">
       <DependentUpon>NotMainWindow.xaml</DependentUpon>
     </Compile>

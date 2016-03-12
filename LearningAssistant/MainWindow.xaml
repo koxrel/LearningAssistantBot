@@ -3,14 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-
         xmlns:local="clr-namespace:LearningAssistant"
         mc:Ignorable="d"
-        Title="Dashboard: [BOT]" Height="232" Width="369" ResizeMode="CanMinimize">
+        Title="Dashboard: LearningAssistant BOT" Height="232" Width="369" ResizeMode="CanMinimize">
 
+    <Window.Resources>
+        <local:ViewModel x:Key="MainViewModel"/>
+        
+    </Window.Resources>
 
-
-    <Grid>
+    <Grid DataContext="{Binding Source={StaticResource MainViewModel}}">
+        
         <DockPanel LastChildFill='False'>
             <Menu DockPanel.Dock='Top' Margin="0,0,-135,0" Height="25">
                 <MenuItem Header='_Actions'>
@@ -26,10 +29,11 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Button x:Name="StartButt" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
-        <Button x:Name="NextButt" Content="Next asignment" Grid.Column="1" HorizontalAlignment="Left" Margin="10,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
-        <Button x:Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
-        <TextBlock x:Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
+        <Button Name="StartButt" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <Button Name="NextButt" Content="Next asignment" Grid.Column="1" HorizontalAlignment="Left" Margin="10,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <Button Name="StopButt" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <TextBlock Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
+        <TextBlock Name="textBlock1" HorizontalAlignment="Left" Margin="85,105,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>
