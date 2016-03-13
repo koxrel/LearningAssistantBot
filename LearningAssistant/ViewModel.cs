@@ -23,12 +23,12 @@ namespace LearningAssistant
 
         public void StartBut(object obj)
         {
-
+            StatusLabel = "active";
         }
 
         public void StopBut(object obj)
         {
-
+            StatusLabel = "inactive";
         }
 
         public void NABut(object obj)
@@ -36,8 +36,19 @@ namespace LearningAssistant
             _nav.NavigateTo("AdditionalWindow");
         }
 
-        public string Status { get; set; } = "active";
-        
+        private string _status = "inactive";
+
+        public string StatusLabel
+        {
+            get { return _status; }
+            set
+            {
+                _status = value;
+                OnPropertyChanged("StatusLabel");
+                    } 
+}
+
+
         public ViewModel()
         {
             ButtonStartClick = new Command(StartBut);
