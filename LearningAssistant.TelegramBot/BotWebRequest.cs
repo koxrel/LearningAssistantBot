@@ -58,5 +58,13 @@ namespace LearningAssistant.TelegramBot
             }
             Factory.DisposeDataAccess();
         }
+
+        private void Process(CancellationToken ct)
+        {
+            while (!ct.IsCancellationRequested)
+            {
+                SendMessages(GetUpdates().UpdateArr);
+            }
+        }
     }
 }
