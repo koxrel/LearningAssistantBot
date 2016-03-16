@@ -120,7 +120,7 @@
   <data name="Comments" xml:space="preserve">
     <value>Все комментарии отправляйте @koxrel ))</value>
   </data>
-  <data name="IncorrentCommand" xml:space="preserve">
+  <data name="IncorrectCommand" xml:space="preserve">
     <value>Введите правильную команду. Сначала нажмите / ...</value>
   </data>
   <data name="Start" xml:space="preserve">

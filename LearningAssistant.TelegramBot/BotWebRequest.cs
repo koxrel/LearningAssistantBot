@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BotInCloud.DTO;
+using LearningAssistant.Database;
+using LearningAssistant.Database.DataAccessImplementations;
 using Newtonsoft.Json;
 
 namespace LearningAssistant.TelegramBot
@@ -25,6 +27,33 @@ namespace LearningAssistant.TelegramBot
             var response = _client.GetAsync($"https://api.telegram.org/bot{Token}/getupdates?offset={_lastUpdateId}").Result;
 
             return JsonConvert.DeserializeObject<Updates>(response.Content.ReadAsStringAsync().Result);
+        }
+
+        private void SendMessages(IEnumerable<Update> updates)
+        {
+            string reply;
+            foreach (var update in updates)
+            {
+                if (update.Message.Text.StartsWith("/start"))
+                    reply = Replies.Start;
+                else if (update.Message.Text.StartsWith("/homework_ie"))
+                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentIeltsHometask());
+                else if (update.Message.Text.StartsWith("/homework_inf"))
+                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentInfoTechHometask());
+                else if (update.Message.Text.StartsWith("/dead"))
+                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentDeadlines());
+                else if (update.Message.Text.Contains("Игорь") || update.Message.Text.Contains("игорь"))
+                    reply = Replies.Comments;
+                else
+                    reply = Replies.IncorrectCommand;
+
+                Factory.DisposeDataAccess();
+
+                _client.GetAsync(
+                        $"https://api.telegram.org/bot{Token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
+            }
+
+            
         }
     }
 }
