@@ -27,11 +27,14 @@ namespace LearningAssistant.TelegramBot
         private int _lastUpdateId;
         private CancellationTokenSource _cts;
 
-        private Updates GetUpdates()
+        //todo: asynchronous logic apply
+        private async Task<Updates> GetUpdates()
         {
-            var response = _client.GetAsync($"https://api.telegram.org/bot{Token}/getupdates?offset={_lastUpdateId}").Result;
+            var response = await _client.GetAsync($"https://api.telegram.org/bot{Token}/getupdates?offset={_lastUpdateId}");
 
-            return JsonConvert.DeserializeObject<Updates>(response.Content.ReadAsStringAsync().Result);
+            var result = await response.Content.ReadAsStringAsync();
+
+            return await Task<Updates>.Factory.StartNew(() => JsonConvert.DeserializeObject<Updates>(result));
         }
 
         private void SendMessages(IEnumerable<Update> updates)
@@ -64,10 +67,10 @@ namespace LearningAssistant.TelegramBot
             Factory.DisposeDataAccess();
         }
 
-        private void Process(CancellationToken ct)
+        private async void Process(CancellationToken ct)
         {
             while (!ct.IsCancellationRequested)
-                SendMessages(GetUpdates().UpdateArr);
+                SendMessages((await GetUpdates()).UpdateArr);
         }
 
         public void StartProcessing()
