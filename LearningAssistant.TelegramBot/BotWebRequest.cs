@@ -66,5 +66,11 @@ namespace LearningAssistant.TelegramBot
                 SendMessages(GetUpdates().UpdateArr);
             }
         }
+
+        public void StartProcessing()
+        {
+            _cts = new CancellationTokenSource();
+            Task.Run(() => Process(_cts.Token));
+        }
     }
 }
