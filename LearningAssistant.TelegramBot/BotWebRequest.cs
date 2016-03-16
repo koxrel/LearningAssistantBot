@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,12 +16,17 @@ namespace LearningAssistant.TelegramBot
 {
     public class BotWebRequest
     {
-        private BotWebRequest() {}
+        private BotWebRequest()
+        {
+            byte[] bytesToken = Convert.FromBase64String(ConfigurationManager.AppSettings["encodedPassword"]);
+            _token = Encoding.UTF8.GetString(ProtectedData.Unprotect(bytesToken, null, DataProtectionScope.CurrentUser));
+        }
+
         private static BotWebRequest _bot;
 
         public BotWebRequest Bot => _bot ?? (_bot = new BotWebRequest());
 
-        private const string Token = "*";
+        private readonly string _token;
         private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
 
         private readonly HttpClient _client = new HttpClient();
@@ -29,7 +36,7 @@ namespace LearningAssistant.TelegramBot
         
         private async Task<Updates> GetUpdates()
         {
-            var response = await _client.GetAsync($"https://api.telegram.org/bot{Token}/getupdates?offset={_lastUpdateId}");
+            var response = await _client.GetAsync($"https://api.telegram.org/bot{_token}/getupdates?offset={_lastUpdateId}");
 
             var result = await response.Content.ReadAsStringAsync();
 
@@ -53,7 +60,7 @@ namespace LearningAssistant.TelegramBot
                     reply = Replies.IncorrectCommand;
 
                 _client.GetAsync(
-                        $"https://api.telegram.org/bot{Token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
+                        $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
 
                 Factory.DataAccess.AddUser(new Database.Entities.User
                 {
