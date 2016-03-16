@@ -31,9 +31,9 @@ namespace LearningAssistant.TelegramBot
 
         private void SendMessages(IEnumerable<Update> updates)
         {
-            string reply;
             foreach (var update in updates)
             {
+                string reply;
                 if (update.Message.Text.StartsWith("/start"))
                     reply = Replies.Start;
                 else if (update.Message.Text.StartsWith("/homework_ie"))
@@ -48,12 +48,15 @@ namespace LearningAssistant.TelegramBot
                 _client.GetAsync(
                         $"https://api.telegram.org/bot{Token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
 
-                Factory.DataAccess.AddUser();
+                Factory.DataAccess.AddUser(new Database.Entities.User
+                {
+                    FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
+                    ChatId = update.Message.Chat.Id
+                });
 
-                Factory.DisposeDataAccess();
+                _lastUpdateId = update.UpdateID + 1;
             }
-
-            
+            Factory.DisposeDataAccess();
         }
     }
 }
