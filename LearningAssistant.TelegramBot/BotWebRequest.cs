@@ -26,8 +26,7 @@ namespace LearningAssistant.TelegramBot
 
         private int _lastUpdateId;
         private CancellationTokenSource _cts;
-
-        //todo: asynchronous logic apply
+        
         private async Task<Updates> GetUpdates()
         {
             var response = await _client.GetAsync($"https://api.telegram.org/bot{Token}/getupdates?offset={_lastUpdateId}");
