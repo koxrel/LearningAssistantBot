@@ -10,7 +10,7 @@ namespace LearningAssistant.Database
     //The class and all its methods are made static since they do not rely on state
     public static class TextBuilder
     {
-        public static string SummarizeDeadlines(IEnumerable<Deadline> deadlines)
+        public static string Summarize(IEnumerable<Deadline> deadlines)
         {
             IEnumerable<Deadline> deadlinesEnumerated = deadlines?.ToArray();
             if (deadlinesEnumerated == null || !deadlinesEnumerated.Any())
@@ -26,7 +26,7 @@ namespace LearningAssistant.Database
             return sb.ToString();
         }
 
-        public static string SummarizeHometask(Hometask hometask)
+        public static string Summarize(Hometask hometask)
         {
             return hometask?.ToString() ?? Info.NotFound;
         }

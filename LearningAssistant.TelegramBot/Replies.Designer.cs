@@ -72,9 +72,9 @@ namespace LearningAssistant.TelegramBot {
         /// <summary>
         ///   Looks up a localized string similar to Введите правильную команду. Сначала нажмите / ....
         /// </summary>
-        internal static string IncorrentCommand {
+        internal static string IncorrectCommand {
             get {
-                return ResourceManager.GetString("IncorrentCommand", resourceCulture);
+                return ResourceManager.GetString("IncorrectCommand", resourceCulture);
             }
         }
         

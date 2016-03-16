@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
@@ -57,7 +58,7 @@ namespace LearningAssistant.Database.DataAccessImplementations
 
         public async void AddUser(User user)
         {
-            _db.Users.Add(user);
+            _db.Users.AddOrUpdate(u => u.ChatId, user);
             await _db.SaveChangesAsync();
         }
 
