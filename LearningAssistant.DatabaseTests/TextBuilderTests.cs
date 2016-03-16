@@ -15,13 +15,13 @@ namespace LearningAssistant.Database.Tests
         [TestMethod()]
         public void SummarizeDeadlines_Should_Return_Not_Found_On_Empty_Sequence_Test()
         {
-            Assert.AreEqual("Не найдено", TextBuilder.SummarizeDeadlines(new List<Deadline>()));
+            Assert.AreEqual("Не найдено", TextBuilder.Summarize(new List<Deadline>()));
         }
 
         [TestMethod()]
         public void SummarizeDeadlines_Should_Return_Not_Found_On_Null_Test()
         {
-            Assert.AreEqual("Не найдено", TextBuilder.SummarizeDeadlines(null));
+            Assert.AreEqual("Не найдено", TextBuilder.Summarize((IEnumerable<Deadline>) null));
         }
 
         [TestMethod()]
@@ -47,13 +47,13 @@ namespace LearningAssistant.Database.Tests
 
             string rightCompare = $"Крайние сроки сдачи работ:\n{deadlines[0]}\n{deadlines[1]}\n";
 
-            Assert.AreEqual(rightCompare, TextBuilder.SummarizeDeadlines(deadlines));
+            Assert.AreEqual(rightCompare, TextBuilder.Summarize(deadlines));
         }
 
         [TestMethod()]
         public void SummarizeHometask_Should_Return_Not_Found_On_Null_Test()
         {
-            Assert.AreEqual("Не найдено", TextBuilder.SummarizeHometask(null));
+            Assert.AreEqual("Не найдено", TextBuilder.Summarize((Hometask) null));
         }
 
         [TestMethod()]
@@ -67,7 +67,7 @@ namespace LearningAssistant.Database.Tests
                 Subject = "InfoTech"
             };
 
-            Assert.AreEqual(hometask.ToString(), TextBuilder.SummarizeHometask(hometask));
+            Assert.AreEqual(hometask.ToString(), TextBuilder.Summarize(hometask));
         }
     }
 }
