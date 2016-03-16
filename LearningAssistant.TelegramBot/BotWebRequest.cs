@@ -42,15 +42,15 @@ namespace LearningAssistant.TelegramBot
                     reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentInfoTechHometask());
                 else if (update.Message.Text.StartsWith("/dead"))
                     reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentDeadlines());
-                else if (update.Message.Text.Contains("Игорь") || update.Message.Text.Contains("игорь"))
-                    reply = Replies.Comments;
                 else
                     reply = Replies.IncorrectCommand;
 
-                Factory.DisposeDataAccess();
-
                 _client.GetAsync(
                         $"https://api.telegram.org/bot{Token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
+
+                Factory.DataAccess.AddUser();
+
+                Factory.DisposeDataAccess();
             }
 
             
