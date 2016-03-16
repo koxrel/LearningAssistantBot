@@ -14,6 +14,11 @@ namespace LearningAssistant.TelegramBot
 {
     public class BotWebRequest
     {
+        private BotWebRequest() {}
+        private static BotWebRequest _bot;
+
+        public BotWebRequest Bot => _bot ?? (_bot = new BotWebRequest());
+
         private const string Token = "*";
         private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
 
@@ -62,9 +67,7 @@ namespace LearningAssistant.TelegramBot
         private void Process(CancellationToken ct)
         {
             while (!ct.IsCancellationRequested)
-            {
                 SendMessages(GetUpdates().UpdateArr);
-            }
         }
 
         public void StartProcessing()
