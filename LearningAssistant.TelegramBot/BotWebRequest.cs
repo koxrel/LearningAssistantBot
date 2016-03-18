@@ -43,7 +43,7 @@ namespace LearningAssistant.TelegramBot
             return await Task<Updates>.Factory.StartNew(() => JsonConvert.DeserializeObject<Updates>(result));
         }
 
-        private void SendMessages(IEnumerable<Update> updates)
+        private async void SendMessages(IEnumerable<Update> updates)
         {
             foreach (var update in updates)
             {
@@ -51,11 +51,11 @@ namespace LearningAssistant.TelegramBot
                 if (update.Message.Text.StartsWith("/start"))
                     reply = Replies.Start;
                 else if (update.Message.Text.StartsWith("/homework_ie"))
-                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentIeltsHometask());
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentIeltsHometask());
                 else if (update.Message.Text.StartsWith("/homework_inf"))
-                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentInfoTechHometask());
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentInfoTechHometask());
                 else if (update.Message.Text.StartsWith("/dead"))
-                    reply = TextBuilder.Summarize(Factory.DataAccess.GetCurrentDeadlines());
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentDeadlines());
                 else
                     reply = Replies.IncorrectCommand;
 

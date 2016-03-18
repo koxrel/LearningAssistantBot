@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant.Database.Interfaces
@@ -9,11 +10,11 @@ namespace LearningAssistant.Database.Interfaces
         void AddHometask(Hometask hometask);
         void AddUser(User user);
         void Dispose();
-        IEnumerable<Deadline> GetCurrentDeadlines();
-        Hometask GetCurrentIeltsHometask();
-        Hometask GetCurrentInfoTechHometask();
-        IEnumerable<Deadline> GetDeadlines();
-        IEnumerable<Hometask> GetHomeTasks();
+        Task<IEnumerable<Deadline>> GetCurrentDeadlines();
+        Task<Hometask> GetCurrentIeltsHometask();
+        Task<Hometask> GetCurrentInfoTechHometask();
+        Task<IEnumerable<Deadline>> GetDeadlines();
+        Task<IEnumerable<Hometask>> GetHomeTasks();
         void RemoveOldRecords();
     }
 }

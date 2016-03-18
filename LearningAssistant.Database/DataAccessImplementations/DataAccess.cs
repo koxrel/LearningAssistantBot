@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Threading.Tasks;
 using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
@@ -12,36 +14,36 @@ namespace LearningAssistant.Database.DataAccessImplementations
     {
         private readonly Context _db = new Context();
 
-        public IEnumerable<Deadline> GetCurrentDeadlines()
+        public async Task<IEnumerable<Deadline>> GetCurrentDeadlines()
         {
-            return _db.Deadlines
+            return await _db.Deadlines
                 .Where(a => a.DueDate >= DateTime.Now)
                 .OrderBy(a => a.DueDate)
-                .ToArray();
+                .ToArrayAsync();
         }
 
-        public IEnumerable<Deadline> GetDeadlines()
+        public async Task<IEnumerable<Deadline>> GetDeadlines()
         {
-            return _db.Deadlines;
+            return await _db.Deadlines.ToArrayAsync();
         }
 
-        public Hometask GetCurrentIeltsHometask()
+        public async Task<Hometask> GetCurrentIeltsHometask()
         {
-            return _db.Hometasks
+            return await _db.Hometasks
                 .OrderBy(h => h.DueDate)
-                .FirstOrDefault(h => h.Subject == "IELTS" && h.DueDate > DateTime.Now);
+                .FirstOrDefaultAsync(h => h.Subject == "IELTS" && h.DueDate > DateTime.Now);
         }
 
-        public Hometask GetCurrentInfoTechHometask()
+        public async Task<Hometask> GetCurrentInfoTechHometask()
         {
-            return _db.Hometasks
+            return await _db.Hometasks
                 .OrderBy(h => h.DueDate)
-                .FirstOrDefault(h => h.Subject == "InfoTech" && h.DueDate > DateTime.Now);
+                .FirstOrDefaultAsync(h => h.Subject == "InfoTech" && h.DueDate > DateTime.Now);
         }
 
-        public IEnumerable<Hometask> GetHomeTasks()
+        public async Task<IEnumerable<Hometask>> GetHomeTasks()
         {
-            return _db.Hometasks;
+            return await _db.Hometasks.ToArrayAsync();
         }
 
         public async void AddHometask(Hometask hometask)
