@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using LearningAssistant.Database.Entities;
 
-namespace LearningAssistant.Database.Classes
+namespace LearningAssistant.Database
 {
     public class Context : DbContext
     {

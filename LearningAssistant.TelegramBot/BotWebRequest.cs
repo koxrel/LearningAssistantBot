@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using LearningAssistant.Database;
 using LearningAssistant.Database.DataAccessImplementations;
+using LearningAssistant.Database.Interfaces;
 using LearningAssistant.TelegramBot.DTO;
 using Newtonsoft.Json;
 
@@ -18,7 +19,7 @@ namespace LearningAssistant.TelegramBot
     {
         private BotWebRequest()
         {
-            byte[] bytesToken = Convert.FromBase64String(ConfigurationManager.AppSettings["encodedPassword"]);
+            byte[] bytesToken = Convert.FromBase64String(ConfigurationManager.AppSettings[Environment.UserName]);
             _token = Encoding.UTF8.GetString(ProtectedData.Unprotect(bytesToken, null, DataProtectionScope.CurrentUser));
         }
 
@@ -49,36 +50,41 @@ namespace LearningAssistant.TelegramBot
         {
             foreach (var update in updates)
             {
-                string reply;
-                if (update.Message.Text.StartsWith("/start"))
-                    reply = Replies.Start;
-                else if (update.Message.Text.StartsWith("/homework_ie"))
-                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentIeltsHometask());
-                else if (update.Message.Text.StartsWith("/homework_inf"))
-                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentInfoTechHometask());
-                else if (update.Message.Text.StartsWith("/dead"))
-                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentDeadlines());
-                else
-                    reply = Replies.IncorrectCommand;
+                using (IDataAccess da = new DataAccess())
+                {
+                    string reply;
+                    if (update.Message.Text.StartsWith("/start"))
+                        reply = Replies.Start;
+                    else if (update.Message.Text.StartsWith("/homework_ie"))
+                        reply = TextBuilder.Summarize(await da.GetCurrentIeltsHometask());
+                    else if (update.Message.Text.StartsWith("/homework_inf"))
+                        reply = TextBuilder.Summarize(await da.GetCurrentInfoTechHometask());
+                    else if (update.Message.Text.StartsWith("/dead"))
+                        reply = TextBuilder.Summarize(await da.GetCurrentDeadlines());
+                    else
+                        reply = Replies.IncorrectCommand;
 
-                await _client.GetAsync(
+                    await _client.GetAsync(
                         $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
 
-                Factory.DataAccess.AddUser(new Database.Entities.User
-                {
-                    FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
-                    ChatId = update.Message.Chat.Id
-                });
-
+                    da.AddUser(new Database.Entities.User
+                    {
+                        FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
+                        ChatId = update.Message.Chat.Id
+                    });
+                }
                 _lastUpdateId = update.UpdateID + 1;
             }
-            Factory.DisposeDataAccess();
         }
 
         private async void Process(CancellationToken ct)
         {
             while (!ct.IsCancellationRequested)
-                SendMessages((await GetUpdates()).UpdateArr);
+            {
+                var messages = (await GetUpdates()).UpdateArr;
+                SendMessages(messages);
+                await Task.Delay(1000);
+            }
         }
 
         public void StartProcessing()

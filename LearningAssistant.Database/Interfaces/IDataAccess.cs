@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant.Database.Interfaces
 {
-    public interface IDataAccess
+    public interface IDataAccess: IDisposable
     {
         void AddDeadline(Deadline deadline);
         void AddHometask(Hometask hometask);

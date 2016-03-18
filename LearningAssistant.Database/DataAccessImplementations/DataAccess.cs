@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using LearningAssistant.Database.Classes;
+using LearningAssistant.Database;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 
@@ -12,7 +12,12 @@ namespace LearningAssistant.Database.DataAccessImplementations
 {
     public class DataAccess : IDisposable, IDataAccess
     {
-        private readonly Context _db = new Context();
+        private readonly Context _db;
+
+        public DataAccess()
+        {
+            _db = new Context();
+        }
 
         public async Task<IEnumerable<Deadline>> GetCurrentDeadlines()
         {
