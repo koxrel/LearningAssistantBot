@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using LearningAssistant.Database.DataAccessImplementations;
+using LearningAssistant.Database.Interfaces;
+using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant
 {
@@ -13,6 +16,18 @@ namespace LearningAssistant
         public AdditionalViewModel()
         {
             ButtonAddClick = new Command(BAddClick);
+        }
+
+        private bool _ae = true;
+
+        public bool AddEnabled
+        {
+            get { return _ae; }
+            set
+            {
+                _ae = value;
+                OnPropertyChanged("AddEnabled");
+            }
         }
 
         private bool _type = true;
@@ -28,24 +43,31 @@ namespace LearningAssistant
         }
 
         public ICommand ButtonAddClick { get; set; }
-
+        
         
         public void BAddClick(object obj)
         {
-           
+            AddEnabled = false;
+            using (IDataAccess da = new DataAccess())
+            {
+                if (Type)
+                {
+                    da.AddDeadline(new Deadline {
+                        Subject = Subject, Description = Description, DueDate = DueDate
+                    });
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            AddEnabled = true;
         }
 
-        //private bool _ht;
-
-        //public bool HomeTask
-        //{
-        //    get { return _ht; }
-        //    set
-        //    {
-        //        _ht = value;
-        //        OnPropertyChanged("HomeTask");
-        //    }
-        //}
+       
 
         private string _subject;
 
