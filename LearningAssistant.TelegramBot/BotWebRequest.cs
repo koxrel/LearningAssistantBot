@@ -59,7 +59,7 @@ namespace LearningAssistant.TelegramBot
                 else
                     reply = Replies.IncorrectCommand;
 
-                _client.GetAsync(
+                await _client.GetAsync(
                         $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
 
                 Factory.DataAccess.AddUser(new Database.Entities.User
