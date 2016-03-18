@@ -11,28 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
 
 namespace LearningAssistant
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для NotMainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWindow : Window
     {
-
-        public MainWindow()
+        public AddWindow()
         {
-           
             InitializeComponent();
-           
-
-
         }
 
-        
+     
     }
 }
