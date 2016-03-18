@@ -13,6 +13,7 @@ namespace LearningAssistant
 {
     class AdditionalViewModel : INotifyPropertyChanged
     {
+        
         public AdditionalViewModel()
         {
             ButtonAddClick = new Command(BAddClick);
@@ -49,42 +50,31 @@ namespace LearningAssistant
         public async void BAddClick(object obj)
         {
             AddEnabled = false;
-            da = new DataAccess();
-
-            //da.OnSavingComplete += SavingComplete;
-
-            if (Type)
+            try
             {
-                await Task.Factory.StartNew(() => da.AddDeadline(new Deadline
-                {
-                    Subject = Subject,
-                    Description = Description,
-                    DueDate = DueDate
-                }));
+                da = new DataAccess();
+                if (Type)
+                    await Task.Factory.StartNew(() => da.AddDeadline(Subject, Description, DueDate));
+                else
+                    await Task.Factory.StartNew(() => da.AddHometask(Subject, Description, DueDate));
             }
-            else
+            catch (ArgumentNullException)
             {
-                await Task.Factory.StartNew(() => da.AddHometask(new Hometask
-                {
-                    Subject = Subject,
-                    Description = Description,
-                    DueDate = DueDate
-                }));
+                Navigator nav = new Navigator();
+                nav.ErrorCaught("Specify all of the parameters!");
+            }
+            catch (Exception ex)
+            {
+                Navigator nav = new Navigator();
+                nav.ErrorCaught(ex.Message);
+            }
+            finally
+            {
+                da.Dispose();
             }
 
             AddEnabled = true;
-
-
-
         }
-
-        public void SavingComplete()
-        {
-            da.Dispose();
-            AddEnabled = true;
-        }
-
-       
 
         private string _subject;
 

@@ -19,7 +19,7 @@ namespace LearningAssistant
 
         }
         Window w;
-        public string NavigateTo(string name)
+        public void NavigateTo(string name)
         {
 
             if (_dict.TryGetValue(name, out w))
@@ -28,16 +28,20 @@ namespace LearningAssistant
 
                 w.Show();
                 _dict[name] = new AddWindow();
-                return name;
+               
             }
-            else
-                return null;
+           
         }
 
         public void CloseWindow(string name)
         {
 
 
+        }
+
+        public void ErrorCaught(string ex)
+        {
+            MessageBox.Show($"Error occured: {ex}");
         }
 
 
