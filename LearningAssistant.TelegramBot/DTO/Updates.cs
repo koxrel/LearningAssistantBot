@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BotInCloud.DTO
+namespace LearningAssistant.TelegramBot.DTO
 {
     public class Updates
     {

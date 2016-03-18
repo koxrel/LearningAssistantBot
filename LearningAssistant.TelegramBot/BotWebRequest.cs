@@ -7,9 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using BotInCloud.DTO;
 using LearningAssistant.Database;
 using LearningAssistant.Database.DataAccessImplementations;
+using LearningAssistant.TelegramBot.DTO;
 using Newtonsoft.Json;
 
 namespace LearningAssistant.TelegramBot
