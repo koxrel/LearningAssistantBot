@@ -24,7 +24,9 @@ namespace LearningAssistant.TelegramBot
 
         private static BotWebRequest _bot;
 
-        public BotWebRequest Bot => _bot ?? (_bot = new BotWebRequest());
+        public static BotWebRequest Bot => _bot ?? (_bot = new BotWebRequest());
+
+        public bool IsActive => _cts != null && !_cts.IsCancellationRequested;
 
         private readonly string _token;
         private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
