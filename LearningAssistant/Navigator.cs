@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace LearningAssistant
 {
-    class Navigator       
+    class Navigator
     {
 
         Dictionary<string, Window> _dict = new Dictionary<string, Window>();
@@ -18,15 +18,15 @@ namespace LearningAssistant
             _dict.Add("AdditionalWindow", new AddWindow());
 
         }
-Window w;
+        Window w;
         public string NavigateTo(string name)
         {
-            
+
             if (_dict.TryGetValue(name, out w))
             {
-                
-                         
-               w.Show();
+
+
+                w.Show();
                 _dict[name] = new AddWindow();
                 return name;
             }
@@ -37,9 +37,9 @@ Window w;
         public void CloseWindow(string name)
         {
 
-            
+
         }
-     
+
 
     }
 }

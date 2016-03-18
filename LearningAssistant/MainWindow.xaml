@@ -18,10 +18,10 @@
         <DockPanel LastChildFill='False'>
             <Menu DockPanel.Dock='Top'  Margin="0,0,-135,0" Height="25">
                 <MenuItem FontSize="16" Header='_Actions'>
-                    <MenuItem Header='Start' Command="{Binding ButtonStartClick}" />
-                    <MenuItem Header='Stop' Command="{Binding ButtonStopClick}"/>
-                    <MenuItem Header='New Asessment' Command="{Binding ButtonNewAssignmentClick}" />
-                    <MenuItem Header='Exit' />
+                    <MenuItem Background="GreenYellow" Header='Start' Command="{Binding ButtonStartClick}" />
+                    <MenuItem Background="Tomato" Header='Stop' Command="{Binding ButtonStopClick}"/>
+                    <MenuItem Background="Beige" Header='New Asessment' Command="{Binding ButtonNewAssignmentClick}" />
+                    <MenuItem Background="AliceBlue" Header='Exit' />
                 </MenuItem>
                 <MenuItem FontSize="16" Header='_About'>
                     <MenuItem  Header='Info'/>
