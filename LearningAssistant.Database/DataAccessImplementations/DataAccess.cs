@@ -51,22 +51,22 @@ namespace LearningAssistant.Database.DataAccessImplementations
             return await _db.Hometasks.ToArrayAsync();
         }
 
-        public async void AddHometask(Hometask hometask)
+        public Task<int> AddHometask(Hometask hometask)
         {
             _db.Hometasks.Add(hometask);
-            await _db.SaveChangesAsync();
+            return _db.SaveChangesAsync();
         }
 
-        public async void AddDeadline(Deadline deadline)
+        public Task<int> AddDeadline(Deadline deadline)
         {
             _db.Deadlines.Add(deadline);
-            await _db.SaveChangesAsync();
+            return _db.SaveChangesAsync();
         }
 
-        public async void AddUser(User user)
+        public Task<int> AddUser(User user)
         {
             _db.Users.AddOrUpdate(u => u.ChatId, user);
-            await _db.SaveChangesAsync();
+            return _db.SaveChangesAsync();
         }
 
         public async void RemoveOldRecords()
