@@ -43,27 +43,44 @@ namespace LearningAssistant
         }
 
         public ICommand ButtonAddClick { get; set; }
-        
-        
-        public void BAddClick(object obj)
+
+        IDataAccess da;
+
+        public async void BAddClick(object obj)
         {
             AddEnabled = false;
-            using (IDataAccess da = new DataAccess())
+            da = new DataAccess();
+
+            //da.OnSavingComplete += SavingComplete;
+
+            if (Type)
             {
-                if (Type)
+                await Task.Factory.StartNew(() => da.AddDeadline(new Deadline
                 {
-                    da.AddDeadline(new Deadline {
-                        Subject = Subject, Description = Description, DueDate = DueDate
-                    });
-                }
-                else
+                    Subject = Subject,
+                    Description = Description,
+                    DueDate = DueDate
+                }));
+            }
+            else
+            {
+                await Task.Factory.StartNew(() => da.AddHometask(new Hometask
                 {
-
-                }
-
-
+                    Subject = Subject,
+                    Description = Description,
+                    DueDate = DueDate
+                }));
             }
 
+            AddEnabled = true;
+
+
+
+        }
+
+        public void SavingComplete()
+        {
+            da.Dispose();
             AddEnabled = true;
         }
 
