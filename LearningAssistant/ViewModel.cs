@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
+using LearningAssistant.TelegramBot;
 
 
 
@@ -24,7 +25,11 @@ namespace LearningAssistant
 
         public void StartBut(object obj)
         {
-            StatusLabel = "active";
+            BotWebRequest.Bot.StartProcessing();
+            if (BotWebRequest.Bot.IsActive)
+                StatusLabel = "active";
+            else
+                StatusLabel = "inactive";
         }
 
         public void StopBut(object obj)
