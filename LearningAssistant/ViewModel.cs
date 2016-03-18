@@ -29,13 +29,15 @@ namespace LearningAssistant
         public void StopBut(object obj)
         {
             StatusLabel = "inactive";
+           
+           
         }
-
+        object w;
         public void NABut(object obj)
         {
-            _nav.NavigateTo("AdditionalWindow");
+            w = _nav.NavigateTo("AdditionalWindow");
         }
-
+        
         private string _status = "inactive";
 
         public string StatusLabel

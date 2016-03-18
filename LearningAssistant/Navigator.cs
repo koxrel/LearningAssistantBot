@@ -16,18 +16,30 @@ namespace LearningAssistant
         public Navigator()
         {
             _dict.Add("AdditionalWindow", new AddWindow());
-        }
 
-        public void NavigateTo(string name)
+        }
+Window w;
+        public string NavigateTo(string name)
         {
-            Window w;
+            
             if (_dict.TryGetValue(name, out w))
             {
-                w.Show();
+                
+                         
+               w.Show();
+                _dict[name] = new AddWindow();
+                return name;
             }
+            else
+                return null;
         }
 
+        public void CloseWindow(string name)
+        {
 
+            
+        }
+     
 
     }
 }
