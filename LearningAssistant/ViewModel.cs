@@ -12,12 +12,8 @@ using LearningAssistant.TelegramBot;
 namespace LearningAssistant
 {
     class ViewModel : INotifyPropertyChanged
-    {
-
-
-
+    {        
         Navigator _nav = new Navigator();
-
         public ICommand ButtonStartClick { get; set; }
         public ICommand ButtonStopClick { get; set; }
         public ICommand ButtonNewAssignmentClick { get; set; }
@@ -34,16 +30,19 @@ namespace LearningAssistant
 
         public void StopBut(object obj)
         {
-            StatusLabel = "inactive";
-           
-           
+            BotWebRequest.Bot.CancelProcessing();
+            if (BotWebRequest.Bot.IsActive)
+                StatusLabel = "active";
+            else
+                StatusLabel = "inactive";
         }
+
         object w;
         public void NABut(object obj)
         {
             w = _nav.NavigateTo("AdditionalWindow");
         }
-        
+
         private string _status = "inactive";
 
         public string StatusLabel
@@ -53,8 +52,8 @@ namespace LearningAssistant
             {
                 _status = value;
                 OnPropertyChanged("StatusLabel");
-                    } 
-}
+            }
+        }
 
 
         public ViewModel()
