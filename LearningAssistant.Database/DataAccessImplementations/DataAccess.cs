@@ -12,6 +12,8 @@ namespace LearningAssistant.Database.DataAccessImplementations
 {
     public class DataAccess : IDisposable, IDataAccess
     {
+        public event Action OnSavingComplete;
+
         private readonly Context _db;
 
         public DataAccess()
@@ -51,22 +53,25 @@ namespace LearningAssistant.Database.DataAccessImplementations
             return await _db.Hometasks.ToArrayAsync();
         }
 
-        public Task<int> AddHometask(Hometask hometask)
+        public async void AddHometask(Hometask hometask)
         {
             _db.Hometasks.Add(hometask);
-            return _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
+            OnSavingComplete?.Invoke();
         }
 
-        public Task<int> AddDeadline(Deadline deadline)
+        public async void AddDeadline(Deadline deadline)
         {
             _db.Deadlines.Add(deadline);
-            return _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
+            OnSavingComplete?.Invoke();
         }
 
-        public Task<int> AddUser(User user)
+        public async void AddUser(User user)
         {
             _db.Users.AddOrUpdate(u => u.ChatId, user);
-            return _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
+            OnSavingComplete?.Invoke();
         }
 
         public async void RemoveOldRecords()
@@ -78,6 +83,7 @@ namespace LearningAssistant.Database.DataAccessImplementations
             _db.Hometasks.RemoveRange(oldHometasks);
 
             await _db.SaveChangesAsync();
+            OnSavingComplete?.Invoke();
         }
 
         public void Dispose()

@@ -7,9 +7,9 @@ namespace LearningAssistant.Database.Interfaces
 {
     public interface IDataAccess: IDisposable
     {
-        Task<int> AddDeadline(Deadline deadline);
-        Task<int> AddHometask(Hometask hometask);
-        Task<int> AddUser(User user);
+        void AddDeadline(Deadline deadline);
+        void AddHometask(Hometask hometask);
+        void AddUser(User user);
         Task<IEnumerable<Deadline>> GetCurrentDeadlines();
         Task<Hometask> GetCurrentIeltsHometask();
         Task<Hometask> GetCurrentInfoTechHometask();
