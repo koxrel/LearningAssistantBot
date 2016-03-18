@@ -10,9 +10,9 @@ using LearningAssistant.Database.Interfaces;
 
 namespace LearningAssistant.Database.DataAccessImplementations
 {
-    public class DataAccess : IDisposable, IDataAccess
+    public class DataAccess : IDataAccess
     {
-        public event Action OnSavingComplete;
+        public event Action OnError;
 
         private readonly Context _db;
 
@@ -57,21 +57,56 @@ namespace LearningAssistant.Database.DataAccessImplementations
         {
             _db.Hometasks.Add(hometask);
             await _db.SaveChangesAsync();
-            OnSavingComplete?.Invoke();
         }
 
         public async void AddDeadline(Deadline deadline)
         {
             _db.Deadlines.Add(deadline);
             await _db.SaveChangesAsync();
-            OnSavingComplete?.Invoke();
+        }
+
+        public void AddHometask(string subject, string description, DateTime dueDate)
+        {
+            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(description))
+                throw new ArgumentNullException();
+
+            AddHometask(new Hometask
+            {
+                Subject = subject,
+                Description = description,
+                DueDate = dueDate
+            });
+        }
+
+        public void AddDeadline(string subject, string description, DateTime dueDate)
+        {
+            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(description))
+                throw new ArgumentNullException();
+
+            AddDeadline(new Deadline
+            {
+                Subject = subject,
+                Description = description,
+                DueDate = dueDate
+            });
         }
 
         public async void AddUser(User user)
         {
             _db.Users.AddOrUpdate(u => u.ChatId, user);
             await _db.SaveChangesAsync();
-            OnSavingComplete?.Invoke();
+        }
+
+        public void AddUser(string fullname, int chatId)
+        {
+            if (string.IsNullOrWhiteSpace(fullname))
+                throw new ArgumentNullException();
+
+            AddUser(new User
+            {
+                FullName = fullname,
+                ChatId = chatId
+            });
         }
 
         public async void RemoveOldRecords()
@@ -83,7 +118,6 @@ namespace LearningAssistant.Database.DataAccessImplementations
             _db.Hometasks.RemoveRange(oldHometasks);
 
             await _db.SaveChangesAsync();
-            OnSavingComplete?.Invoke();
         }
 
         public void Dispose()

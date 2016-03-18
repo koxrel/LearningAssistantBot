@@ -7,7 +7,6 @@ namespace LearningAssistant.Database.Interfaces
 {
     public interface IDataAccess: IDisposable
     {
-        event Action OnSavingComplete;
         void AddDeadline(Deadline deadline);
         void AddHometask(Hometask hometask);
         void AddUser(User user);
