@@ -62,6 +62,8 @@ namespace LearningAssistant
             ButtonStartClick = new Command(StartBut);
             ButtonStopClick = new Command(StopBut);
             ButtonNewAssignmentClick = new Command(NABut);
+            Navigator nav = new Navigator();
+            nav.NavigateTo("HTE");
 
         }
         public event PropertyChangedEventHandler PropertyChanged;

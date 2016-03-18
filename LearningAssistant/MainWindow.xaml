@@ -33,7 +33,6 @@
         <Button Name="NextButt" FontSize="16" Background="Beige" Content="New assignment" Grid.Column="1" HorizontalAlignment="Left" Margin="0,95,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonNewAssignmentClick}" Width="135" Height="35"/>
         <Button Name="StopButt" FontSize="16" Background="Tomato" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="0,60,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonStopClick}" Width="135" Height="35"/>
         <TextBlock Name="textBlock" FontSize="16" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
-        <TextBlock Name="textBlock1" HorizontalAlignment="Left" Margin="85,105,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
         <Label FontSize="16" x:Name="NameLabel" Content="LearningAssistant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,0,0,0" Grid.Row="1" Width="135"/>
         <TextBlock FontSize="16"  HorizontalAlignment="Left" Margin="9,5,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Bot name:" VerticalAlignment="Top"/>
         <TextBlock FontSize="16"  HorizontalAlignment="Left" Margin="25,34,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Status:" VerticalAlignment="Top" Width="55"/>

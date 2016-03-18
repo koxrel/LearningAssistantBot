@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearningAssistant.Database\LearningAssistant.Database.csproj">
-      <Project>{2441E834-FDDD-4D4C-8901-319D69F026E9}</Project>
+      <Project>{2441e834-fddd-4d4c-8901-319d69f026e9}</Project>
       <Name>LearningAssistant.Database</Name>
     </ProjectReference>
   </ItemGroup>

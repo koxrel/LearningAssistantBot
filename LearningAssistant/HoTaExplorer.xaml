@@ -1,0 +1,57 @@
+﻿<Window x:Class="LearningAssistant.HoTaExplorer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearningAssistant"
+        mc:Ignorable="d"
+        Title="Home Tasks Explorer" Height="350" Width="600">
+    <Window.Resources>
+        <local:HoTaExplorerViewModel x:Key="HTEVM"/>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource HTEVM}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>        
+        <DataGrid Grid.Row="1" Name="dataGridGrades" ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Subject" Width="1*" Binding="{Binding Subject}"/>                
+                <DataGridTextColumn Header="Due Date"  Width="1*" Binding="{Binding DueDate}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Width="2*" Binding="{Binding Description}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Button Name="buttonAdd" Margin="5 3" >Add</Button>
+            <Button Name="buttonRemove" Margin="5 3">Remove</Button>
+        </StackPanel>
+       
+    </Grid>
+</Window>

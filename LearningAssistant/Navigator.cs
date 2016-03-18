@@ -16,6 +16,7 @@ namespace LearningAssistant
         public Navigator()
         {
             _dict.Add("AdditionalWindow", new AddWindow());
+            _dict.Add("HTE", new HoTaExplorer());
 
         }
         Window w;
@@ -24,11 +25,7 @@ namespace LearningAssistant
 
             if (_dict.TryGetValue(name, out w))
             {
-
-
-                w.Show();
-                _dict[name] = new AddWindow();
-               
+                w.ShowDialog();           
             }
            
         }
