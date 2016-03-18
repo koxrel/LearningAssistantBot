@@ -132,6 +132,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearningAssistant.TelegramBot\LearningAssistant.TelegramBot.csproj">
+      <Project>{369975d3-6c69-4dd8-88aa-7b5f5c2b612d}</Project>
+      <Name>LearningAssistant.TelegramBot</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
