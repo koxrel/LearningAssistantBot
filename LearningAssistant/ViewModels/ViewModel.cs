@@ -13,6 +13,13 @@ namespace LearningAssistant
 {
     class ViewModel : INotifyPropertyChanged
     {        
+
+        public void BotError()
+        {
+            Navigator nav = new Navigator();
+            nav.ErrorCaught("bot could not process requests");
+            StatusLabel = "inactive";
+        }
        
         public ICommand ButtonStartClick { get; set; }
         public ICommand ButtonStopClick { get; set; }
@@ -22,17 +29,18 @@ namespace LearningAssistant
 
         public void OverviewHomeTasks(object obj)
         {
-           
+            new Navigator().NavigateTo("HTE");
         }
 
         public void OverviewDeadlines(object obj)
         {
-
+            new Navigator().NavigateTo("DE");
         }
 
         public void StartBut(object obj)
         {
             
+            BotWebRequest.Bot.OnError += BotError;            
             BotWebRequest.Bot.StartProcessing();
             if (BotWebRequest.Bot.IsActive)
                 StatusLabel = "active";
@@ -49,11 +57,12 @@ namespace LearningAssistant
                 StatusLabel = "inactive";
         }
 
+
+
       
         public void NABut(object obj)
         {
-            Navigator nav = new Navigator();
-            nav.NavigateTo("AdditionalWindow");
+           new Navigator().NavigateTo("AdditionalWindow");
         }
 
         private string _status = "inactive";
@@ -74,9 +83,8 @@ namespace LearningAssistant
             ButtonStartClick = new Command(StartBut);
             ButtonStopClick = new Command(StopBut);
             ButtonNewAssignmentClick = new Command(NABut);
-            Navigator nav = new Navigator();
-            nav.NavigateTo("HTE");
-
+            ButtonOverviewDeadlinesClick = new Command(OverviewDeadlines);
+            ButtonOverviewHomeTasksClick = new Command(OverviewHomeTasks);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

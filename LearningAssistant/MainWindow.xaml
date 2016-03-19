@@ -31,8 +31,8 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Button Name="StartButt" FontSize="16" Background="GreenYellow" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="0,25,0,0" Grid.Row="1" Command="{Binding ButtonStartClick}" VerticalAlignment="Top" Width="135" Height="35"/>
-        <Button Name="NextButt" FontSize="16" Background="Beige" Content="New assignment" Grid.Column="1" HorizontalAlignment="Left" Margin="0,95,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonNewAssignmentClick}" Width="135" Height="35"/>
+        <Button Name="StartButt" FontSize="16" Background="GreenYellow" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="0,25,0,0" Grid.Row="1" IsEnabled="{Binding ButActive}" Command="{Binding ButtonStartClick}" VerticalAlignment="Top" Width="135" Height="35"/>
+        <Button Name="NextButt" FontSize="16" Background="Beige" Content="New assignment" Grid.Column="1" HorizontalAlignment="Left" Margin="0,95,0,0" Grid.Row="1" IsEnabled="{Binding ButActive}" VerticalAlignment="Top" Command="{Binding ButtonNewAssignmentClick}" Width="135" Height="35"/>
         <Button Name="StopButt" FontSize="16" Background="Tomato" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="0,60,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonStopClick}" Width="135" Height="35"/>
         <TextBlock Name="textBlock" FontSize="16" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Control part" VerticalAlignment="Top"/>
         <Label FontSize="16" x:Name="NameLabel" Content="LearningAssistant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,0,0,0" Grid.Row="1" Width="135"/>
