@@ -32,6 +32,11 @@ namespace LearningAssistant.Database.DataAccessImplementations
             return await _db.Deadlines.ToArrayAsync();
         }
 
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            return await _db.Users.ToArrayAsync();
+        }
+
         public async Task<Hometask> GetCurrentIeltsHometask()
         {
             return await _db.Hometasks

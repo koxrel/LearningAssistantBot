@@ -13,6 +13,7 @@ namespace LearningAssistant.Database.Interfaces
         Task<IEnumerable<Deadline>> GetCurrentDeadlines();
         Task<Hometask> GetCurrentIeltsHometask();
         Task<Hometask> GetCurrentInfoTechHometask();
+        Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<Deadline>> GetDeadlines();
         Task<IEnumerable<Hometask>> GetHomeTasks();
         Task RemoveOldRecords();

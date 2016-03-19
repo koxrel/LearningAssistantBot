@@ -38,16 +38,19 @@ namespace LearningAssistant.TelegramBot
         public static event Action OnError;
 
         private readonly string _token;
-        private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
+
+        private const string Keyboard =
+            @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
 
         private readonly HttpClient _client = new HttpClient();
 
         private int _lastUpdateId;
         private CancellationTokenSource _cts;
-        
+
         private async Task<Updates> GetUpdates()
         {
-            var response = await _client.GetAsync($"https://api.telegram.org/bot{_token}/getupdates?offset={_lastUpdateId}");
+            var response =
+                await _client.GetAsync($"https://api.telegram.org/bot{_token}/getupdates?offset={_lastUpdateId}");
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception();
@@ -102,7 +105,12 @@ namespace LearningAssistant.TelegramBot
             }
         }
 
-        public void StartProcessing()
+        private async void SendBulkMessage()
+        {
+            
+        }
+
+    public void StartProcessing()
         {
             _cts = new CancellationTokenSource();
             Task.Run(() => Process(_cts.Token));
