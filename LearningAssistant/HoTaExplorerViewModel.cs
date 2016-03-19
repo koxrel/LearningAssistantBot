@@ -24,6 +24,20 @@ namespace LearningAssistant
             }
         }
 
+        private Hometask _si;
+
+        public Hometask SelectedItem
+        {
+            get { return _si; }
+            set
+            {
+                _si = value;
+                OnPropertyChanged("Items");
+            }
+        }
+        
+
+
         public HoTaExplorerViewModel()
         {
            ItemSet();
@@ -32,7 +46,7 @@ namespace LearningAssistant
         private async void ItemSet()
         {
             IDataAccess mta = new DataAccess();
-            Items = await mta.GetHomeTasks();
+            Items = await mta.GetHomeTasks();            
         }
 
 

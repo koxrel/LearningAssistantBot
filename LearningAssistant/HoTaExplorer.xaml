@@ -18,8 +18,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>        
-        <DataGrid Grid.Row="1" Name="dataGridGrades" ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="1" Name="dataGridGrades" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Subject" Width="1*" Binding="{Binding Subject}"/>                
                 <DataGridTextColumn Header="Due Date"  Width="1*" Binding="{Binding DueDate}">
