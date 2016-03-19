@@ -25,10 +25,10 @@ namespace LearningAssistantTests
         public void Convert_Should_Return_Green_On_Active_Value_Test()
         {
             var c = new TextToColourConverter();
-            Assert.AreEqual((new SolidColorBrush(Colors.GreenYellow)).ToString(), c.Convert("active", null, null, null).ToString());
+            Assert.AreEqual((new SolidColorBrush(Colors.Lime)).ToString(), c.Convert("active", null, null, null).ToString());
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void Convert_Should_Return_Black_On_Anything_Besides_Active_And_Inactive_Value_Test()
         {
             var c = new TextToColourConverter();
