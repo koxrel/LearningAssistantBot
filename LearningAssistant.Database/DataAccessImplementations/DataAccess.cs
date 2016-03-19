@@ -12,8 +12,6 @@ namespace LearningAssistant.Database.DataAccessImplementations
 {
     public class DataAccess : IDataAccess
     {
-        public event Action OnError;
-
         private readonly Context _db;
 
         public DataAccess()
@@ -109,7 +107,25 @@ namespace LearningAssistant.Database.DataAccessImplementations
             });
         }
 
-        public async void RemoveOldRecords()
+        public async Task RemoveHometask(Hometask hometask)
+        {
+            _db.Hometasks.Remove(hometask);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task RemoveDeadline(Deadline deadline)
+        {
+            _db.Deadlines.Remove(deadline);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task RemoveUser(User user)
+        {
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task RemoveOldRecords()
         {
             var oldDeadlines = _db.Deadlines.Where(d => d.DueDate < DateTime.Now);
             _db.Deadlines.RemoveRange(oldDeadlines);
