@@ -11,11 +11,13 @@ using System.Windows.Input;
 
 namespace LearningAssistant.ViewModels
 {
+    
     abstract public class DetailsBaseViewModel<T>:INotifyPropertyChanged
     {
 
+
         public DetailsBaseViewModel()
-        {
+        {            
             ItemSet();
             ButtonAddClick = new Command(AddBut);
             ButtonRemoveClick = new Command(RemoveBut);
