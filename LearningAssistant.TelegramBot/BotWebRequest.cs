@@ -55,29 +55,26 @@ namespace LearningAssistant.TelegramBot
         {
             foreach (var update in updates)
             {
-                using (IDataAccess da = new DataAccess())
+                string reply;
+                if (update.Message.Text.StartsWith("/start"))
+                    reply = Replies.Start;
+                else if (update.Message.Text.StartsWith("/homework_ie"))
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentIeltsHometask());
+                else if (update.Message.Text.StartsWith("/homework_inf"))
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentInfoTechHometask());
+                else if (update.Message.Text.StartsWith("/dead"))
+                    reply = TextBuilder.Summarize(await Factory.DataAccess.GetCurrentDeadlines());
+                else
+                    reply = Replies.IncorrectCommand;
+
+                await _client.GetAsync(
+                    $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
+
+                await Factory.DataAccess.AddUser(new Database.Entities.User
                 {
-                    string reply;
-                    if (update.Message.Text.StartsWith("/start"))
-                        reply = Replies.Start;
-                    else if (update.Message.Text.StartsWith("/homework_ie"))
-                        reply = TextBuilder.Summarize(await da.GetCurrentIeltsHometask());
-                    else if (update.Message.Text.StartsWith("/homework_inf"))
-                        reply = TextBuilder.Summarize(await da.GetCurrentInfoTechHometask());
-                    else if (update.Message.Text.StartsWith("/dead"))
-                        reply = TextBuilder.Summarize(await da.GetCurrentDeadlines());
-                    else
-                        reply = Replies.IncorrectCommand;
-
-                    await _client.GetAsync(
-                        $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
-
-                    await da.AddUser(new Database.Entities.User
-                    {
-                        FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
-                        ChatId = update.Message.Chat.Id
-                    });
-                }
+                    FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
+                    ChatId = update.Message.Chat.Id
+                });
                 _lastUpdateId = update.UpdateID + 1;
             }
         }
