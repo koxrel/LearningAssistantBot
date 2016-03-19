@@ -7,11 +7,20 @@ using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 using LearningAssistant.Database.DataAccessImplementations;
+using System.Windows.Input;
 
 namespace LearningAssistant
 {
     public class HoTaExplorerViewModel : INotifyPropertyChanged
     {
+
+
+        public HoTaExplorerViewModel()
+        {
+            ItemSet();
+            ButtonAddClick = new Command(AddBut);
+            ButtonRemoveClick = new Command(RemoveBut);
+        }
 
         private IEnumerable<Hometask> _items;
 
@@ -35,13 +44,24 @@ namespace LearningAssistant
                 OnPropertyChanged("Items");
             }
         }
-        
 
+        public ICommand ButtonAddClick { get; set; }
 
-        public HoTaExplorerViewModel()
+        public void AddBut(object obj)
         {
-           ItemSet();
+            Navigator nav = new Navigator();
+            nav.NavigateTo("AdditionalWindow");            
         }
+
+        public ICommand ButtonRemoveClick { get; set; }
+
+        public void RemoveBut(object obj)
+        {
+            Navigator nav = new Navigator();
+            nav.NavigateTo("AdditionalWindow");
+        }
+
+
 
         private async void ItemSet()
         {
