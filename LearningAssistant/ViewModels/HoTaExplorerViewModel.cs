@@ -22,7 +22,7 @@ namespace LearningAssistant
         public override async Task RefreshGrid()
         {
             try {
-                using (IDataAccess mta = Factory.GetDataAccess)
+                using (IDataAccess mta = new DataAccess())
                 {
                     Items = await mta.GetHomeTasks();
                 }
@@ -56,7 +56,7 @@ namespace LearningAssistant
             {
 
                 ButEnabled = false;
-                using (IDataAccess da = Factory.GetDataAccess)
+                using (IDataAccess da = new DataAccess())
                 {
                     await da.RemoveHometask(SelectedItem);
                     await RefreshGrid(da);
