@@ -55,15 +55,31 @@ namespace LearningAssistant
 
         public ICommand ButtonRemoveClick { get; set; }
 
-        public void RemoveBut(object obj)
+        public async void RemoveBut(object obj)
         {
+            ButEnabled = false;
             using (IDataAccess da = new DataAccess())
             {
-                
+               await da.RemoveHometask(SelectedItem);
+                await RefreshGrid(da);
             }
+
+            ButEnabled = true;
         }
 
-        private bool _be;
+        public async Task RefreshGrid()
+        {
+            IDataAccess mta = new DataAccess();
+            Items = await mta.GetHomeTasks();
+        }
+
+        public async Task RefreshGrid(IDataAccess mta)
+        {
+            Items = await mta.GetHomeTasks();
+        }
+
+
+        private bool _be = true;
 
         public bool ButEnabled
         {
@@ -83,8 +99,7 @@ namespace LearningAssistant
 
         private async void ItemSet()
         {
-            IDataAccess mta = new DataAccess();
-            Items = await mta.GetHomeTasks();            
+            await RefreshGrid();       
         }
 
 
