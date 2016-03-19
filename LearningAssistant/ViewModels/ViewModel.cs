@@ -12,7 +12,16 @@ using LearningAssistant.TelegramBot;
 namespace LearningAssistant
 {
     class ViewModel : INotifyPropertyChanged
-    {        
+    {
+        public ViewModel()
+        {
+            ButtonStartClick = new Command(StartBut);
+            ButtonStopClick = new Command(StopBut);
+            ButtonNewAssignmentClick = new Command(NABut);
+            ButtonOverviewDeadlinesClick = new Command(OverviewDeadlines);
+            ButtonOverviewHomeTasksClick = new Command(OverviewHomeTasks);
+            ButtonOverviewUsersClick = new Command(OverviewUsers);
+        }
 
         public void BotError()
         {
@@ -26,6 +35,12 @@ namespace LearningAssistant
         public ICommand ButtonNewAssignmentClick { get; set; }
         public ICommand ButtonOverviewHomeTasksClick { get; set; }
         public ICommand ButtonOverviewDeadlinesClick { get; set; }
+        public ICommand ButtonOverviewUsersClick { get; set; }
+
+        public void OverviewUsers(object obj)
+        {
+            new Navigator().NavigateTo("UE");
+        }
 
         public void OverviewHomeTasks(object obj)
         {
@@ -44,7 +59,8 @@ namespace LearningAssistant
 
             try
             {
-                BotWebRequest.Bot.OnError += BotError;
+                
+                BotWebRequest.OnError += BotError;
                 BotWebRequest.Bot.StartProcessing();
                 if (BotWebRequest.Bot.IsActive)
                 {
@@ -139,15 +155,20 @@ namespace LearningAssistant
             }
         }
 
+        private string _apis;
 
-        public ViewModel()
+        public string APIstring
         {
-            ButtonStartClick = new Command(StartBut);
-            ButtonStopClick = new Command(StopBut);
-            ButtonNewAssignmentClick = new Command(NABut);
-            ButtonOverviewDeadlinesClick = new Command(OverviewDeadlines);
-            ButtonOverviewHomeTasksClick = new Command(OverviewHomeTasks);
+            get { return _apis; }
+            set
+            {
+                _apis = value;
+                OnPropertyChanged("APIstring");
+            }
         }
+
+
+        
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

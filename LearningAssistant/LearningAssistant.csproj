@@ -45,8 +45,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -93,6 +95,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="ViewModels\DeadlineExplorerViewModel.cs" />
     <Compile Include="ViewModels\DetailsBaseViewModel.cs" />
+    <Compile Include="ViewModels\UserExplorerViewModel.cs" />
     <Compile Include="Views\DeadlineExplorer.xaml.cs">
       <DependentUpon>DeadlineExplorer.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,9 @@
     </Compile>
     <Compile Include="TextToColourConverter.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\UserExplorer.xaml.cs">
+      <DependentUpon>UserExplorer.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\DeadlineExplorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +133,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserExplorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

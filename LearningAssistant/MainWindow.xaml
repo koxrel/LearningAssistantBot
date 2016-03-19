@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:LearningAssistant"
         mc:Ignorable="d"
-        Title="Dashboard: LearningAssistant bot" Height="232" Width="369" ResizeMode="CanMinimize">
+        Title="Dashboard: LearningAssistant bot" Height="291" Width="369" ResizeMode="CanMinimize">
 
     <Window.Resources>
         <local:ViewModel x:Key="MainViewModel"/>
@@ -40,8 +40,31 @@
         <TextBlock FontSize="16"  HorizontalAlignment="Left" Margin="25,34,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="Status:" VerticalAlignment="Top" Width="55"/>
         <Label FontSize="16" x:Name="StatusLabel" Foreground="{Binding StatusLabel, Converter={StaticResource TextToColour}}" Content="{Binding StatusLabel, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="81,29,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="130" VerticalAlignment="Top" Width="135" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="OHT" FontSize="16" Background="LemonChiffon" Content="Overview home tasks" HorizontalAlignment="Left" Margin="20,65,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewHomeTasksClick}" Width="175" Height="35"/>
-        <Button x:Name="OD" FontSize="16" Background="AliceBlue" Content="Overview deadlines" HorizontalAlignment="Left" Margin="20,110,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewDeadlinesClick}" Width="175" Height="35"/>
+        <Button x:Name="OHT" FontSize="16" Background="LemonChiffon" Content="Overview home tasks" HorizontalAlignment="Left" Margin="20,60,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewHomeTasksClick}" Width="175" Height="35"/>
+        <Button x:Name="OD" FontSize="16" Background="AliceBlue" Content="Overview deadlines" HorizontalAlignment="Left" Margin="20,95,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewDeadlinesClick}" Width="175" Height="35"/>
+        <Button x:Name="OU" FontSize="16" Background="AliceBlue" Content="Overview users" HorizontalAlignment="Left" Margin="20,130,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewUsersClick}" Width="175" Height="35"/>
+        <TextBox x:Name="APIbox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="5,187,0,0" Grid.Row="1" Text="{Binding APIstring}" TextWrapping="Wrap" VerticalAlignment="Top" Width="345">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.4" Stretch="None" AlignmentX="Left" >
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Normal"  Text="Enter your API!" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+
+        </TextBox>       
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>
