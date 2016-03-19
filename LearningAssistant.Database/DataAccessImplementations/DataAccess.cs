@@ -51,24 +51,24 @@ namespace LearningAssistant.Database.DataAccessImplementations
             return await _db.Hometasks.ToArrayAsync();
         }
 
-        public async void AddHometask(Hometask hometask)
+        public async Task AddHometask(Hometask hometask)
         {
             _db.Hometasks.Add(hometask);
             await _db.SaveChangesAsync();
         }
 
-        public async void AddDeadline(Deadline deadline)
+        public async Task AddDeadline(Deadline deadline)
         {
             _db.Deadlines.Add(deadline);
             await _db.SaveChangesAsync();
         }
 
-        public void AddHometask(string subject, string description, DateTime dueDate)
+        public async Task AddHometask(string subject, string description, DateTime dueDate)
         {
             if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException();
 
-            AddHometask(new Hometask
+            await AddHometask(new Hometask
             {
                 Subject = subject,
                 Description = description,
@@ -76,12 +76,12 @@ namespace LearningAssistant.Database.DataAccessImplementations
             });
         }
 
-        public void AddDeadline(string subject, string description, DateTime dueDate)
+        public async Task AddDeadline(string subject, string description, DateTime dueDate)
         {
             if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException();
 
-            AddDeadline(new Deadline
+            await AddDeadline(new Deadline
             {
                 Subject = subject,
                 Description = description,
@@ -89,18 +89,18 @@ namespace LearningAssistant.Database.DataAccessImplementations
             });
         }
 
-        public async void AddUser(User user)
+        public async Task AddUser(User user)
         {
             _db.Users.AddOrUpdate(u => u.ChatId, user);
             await _db.SaveChangesAsync();
         }
 
-        public void AddUser(string fullname, int chatId)
+        public async Task AddUser(string fullname, int chatId)
         {
             if (string.IsNullOrWhiteSpace(fullname))
                 throw new ArgumentNullException();
 
-            AddUser(new User
+            await AddUser(new User
             {
                 FullName = fullname,
                 ChatId = chatId
