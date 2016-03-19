@@ -103,12 +103,19 @@ namespace LearningAssistant.TelegramBot
 
         public async void SendBulkMessage(string message)
         {
-            foreach (var user in await Factory.DataAccess.GetUsers())
+            try
             {
-                if (_cts.IsCancellationRequested) return;
-                await _client.GetAsync(
-                    $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={user.ChatId}&text={message}&reply_markup={Keyboard}");
-                await Task.Delay(300);
+                foreach (var user in await Factory.DataAccess.GetUsers())
+                {
+                    if (_cts.IsCancellationRequested) return;
+                    await _client.GetAsync(
+                        $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={user.ChatId}&text={message}&reply_markup={Keyboard}");
+                    await Task.Delay(300);
+                }
+            }
+            catch (Exception)
+            {
+                OnError?.Invoke();
             }
         }
 
