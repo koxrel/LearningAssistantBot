@@ -91,10 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Factory.cs" />
-    <Compile Include="INavigator.cs" />
+    <Compile Include="Classes\Factory.cs" />
+    <Compile Include="Interfaces\INavigator.cs" />
     <Compile Include="ViewModels\AdditionalViewModel.cs" />
-    <Compile Include="Command.cs" />
+    <Compile Include="Classes\Command.cs" />
     <Compile Include="ViewModels\DeadlineExplorerViewModel.cs" />
     <Compile Include="ViewModels\DetailsBaseViewModel.cs" />
     <Compile Include="ViewModels\UserExplorerViewModel.cs" />
@@ -105,11 +105,11 @@
       <DependentUpon>HoTaExplorer.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HoTaExplorerViewModel.cs" />
-    <Compile Include="Navigator.cs" />
+    <Compile Include="INavigatorImplementations\Navigator.cs" />
     <Compile Include="Views\AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextToColourConverter.cs" />
+    <Compile Include="Converters\TextToColourConverter.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\UserExplorer.xaml.cs">
       <DependentUpon>UserExplorer.xaml</DependentUpon>

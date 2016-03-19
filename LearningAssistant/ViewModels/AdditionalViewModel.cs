@@ -98,6 +98,8 @@ namespace LearningAssistant
                     else
                         await da.AddHometask(Subject, Description, DueDate);
                 }
+                Subject = string.Empty;
+                Description = string.Empty;
             }
             catch (ArgumentNullException)
             {
@@ -106,7 +108,7 @@ namespace LearningAssistant
             catch (Exception ex)
             {
                 OnError(ex.Message);
-            }
+            }           
             AddEnabled = true;
         }
 
