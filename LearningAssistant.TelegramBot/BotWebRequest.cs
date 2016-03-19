@@ -46,7 +46,7 @@ namespace LearningAssistant.TelegramBot
             return await Task<Updates>.Factory.StartNew(() => JsonConvert.DeserializeObject<Updates>(result));
         }
 
-        private async void SendMessages(IEnumerable<Update> updates)
+        private async Task SendMessages(IEnumerable<Update> updates)
         {
             foreach (var update in updates)
             {
@@ -67,7 +67,7 @@ namespace LearningAssistant.TelegramBot
                     await _client.GetAsync(
                         $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={update.Message.Chat.Id}&text={reply}&reply_markup={Keyboard}");
 
-                    da.AddUser(new Database.Entities.User
+                    await da.AddUser(new Database.Entities.User
                     {
                         FullName = $"{update.Message.User.Name} {update.Message.User.Surname}",
                         ChatId = update.Message.Chat.Id
@@ -82,8 +82,7 @@ namespace LearningAssistant.TelegramBot
             while (!ct.IsCancellationRequested)
             {
                 var messages = (await GetUpdates()).UpdateArr;
-                SendMessages(messages);
-                await Task.Delay(1000);
+                await SendMessages(messages);
             }
         }
 
