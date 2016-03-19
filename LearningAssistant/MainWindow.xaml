@@ -42,12 +42,12 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="130" VerticalAlignment="Top" Width="135" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="OHT" FontSize="16" Background="LemonChiffon" Content="Overview home tasks" HorizontalAlignment="Left" Margin="20,60,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewHomeTasksClick}" Width="175" Height="35"/>
         <Button x:Name="OD" FontSize="16" Background="AliceBlue" Content="Overview deadlines" HorizontalAlignment="Left" Margin="20,95,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewDeadlinesClick}" Width="175" Height="35"/>
-        <Button x:Name="OU" FontSize="16" Background="AliceBlue" Content="Overview users" HorizontalAlignment="Left" Margin="20,130,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewUsersClick}" Width="175" Height="35"/>
-        <TextBox x:Name="APIbox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="5,187,0,0" Grid.Row="1" Text="{Binding APIstring}" TextWrapping="Wrap" VerticalAlignment="Top" Width="345">
+        <Button x:Name="OU" FontSize="16" Background="LightGray" Content="Overview users" HorizontalAlignment="Left" Margin="20,130,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewUsersClick}" Width="175" Height="35"/>
+        <TextBox x:Name="APIbox" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Left" Height="30" Margin="10,177,0,0" Grid.Row="1" Text="{Binding Message}" TextWrapping="Wrap" VerticalAlignment="Top" Width="265">
             <TextBox.Resources>
                 <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.4" Stretch="None" AlignmentX="Left" >
                     <VisualBrush.Visual>
-                        <TextBlock FontStyle="Normal"  Text="Enter your API!" />
+                        <TextBlock FontStyle="Normal" FontSize="16" Text="Enter your message to all users!" />
                     </VisualBrush.Visual>
                 </VisualBrush>
             </TextBox.Resources>
@@ -64,7 +64,8 @@
                 </Style>
             </TextBox.Style>
 
-        </TextBox>       
+        </TextBox>
+        <Button x:Name="Send" FontSize="17" Background="Yellow"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="50,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>

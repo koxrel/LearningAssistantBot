@@ -21,6 +21,7 @@ namespace LearningAssistant
             ButtonOverviewDeadlinesClick = new Command(OverviewDeadlines);
             ButtonOverviewHomeTasksClick = new Command(OverviewHomeTasks);
             ButtonOverviewUsersClick = new Command(OverviewUsers);
+            ButtonSendClick = new Command(SendMessage);
         }
 
         public void BotError()
@@ -36,6 +37,16 @@ namespace LearningAssistant
         public ICommand ButtonOverviewHomeTasksClick { get; set; }
         public ICommand ButtonOverviewDeadlinesClick { get; set; }
         public ICommand ButtonOverviewUsersClick { get; set; }
+        public ICommand ButtonSendClick { get; set; }
+
+        public void SendMessage(object obj)
+        {
+            if (!string.IsNullOrWhiteSpace(Message))
+            {
+                BotWebRequest.Bot.SendBulkMessage(Message);
+            }
+            Message = string.Empty;
+        }
 
         public void OverviewUsers(object obj)
         {
@@ -155,15 +166,15 @@ namespace LearningAssistant
             }
         }
 
-        private string _apis;
+        private string _mes;
 
-        public string APIstring
+        public string Message
         {
-            get { return _apis; }
+            get { return _mes; }
             set
             {
-                _apis = value;
-                OnPropertyChanged("APIstring");
+                _mes = value;
+                OnPropertyChanged("Message");
             }
         }
 
