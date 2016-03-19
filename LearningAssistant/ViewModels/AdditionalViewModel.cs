@@ -58,7 +58,7 @@ namespace LearningAssistant
             AddEnabled = false;
             try
             {
-                da = new DataAccess();
+                da = Factory.GetDataAccess;
                 if (Type)
                     await da.AddDeadline(Subject, Description, DueDate);
                 else
