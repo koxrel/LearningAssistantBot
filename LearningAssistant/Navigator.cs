@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearningAssistant.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace LearningAssistant
         {
             _dict.Add("AdditionalWindow", new AddWindow());
             _dict.Add("HTE", new HoTaExplorer());
+            _dict.Add("DE", new DeadlineExplorer());
 
         }
         Window w;

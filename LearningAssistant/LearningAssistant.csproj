@@ -91,7 +91,11 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\AdditionalViewModel.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="ViewModels\DeadlineExplorerViewModel.cs" />
     <Compile Include="ViewModels\DetailsBaseViewModel.cs" />
+    <Compile Include="Views\DeadlineExplorer.xaml.cs">
+      <DependentUpon>DeadlineExplorer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HoTaExplorer.xaml.cs">
       <DependentUpon>HoTaExplorer.xaml</DependentUpon>
     </Compile>
@@ -102,6 +106,10 @@
     </Compile>
     <Compile Include="TextToColourConverter.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="Views\DeadlineExplorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HoTaExplorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

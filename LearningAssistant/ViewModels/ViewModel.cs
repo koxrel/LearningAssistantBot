@@ -17,7 +17,18 @@ namespace LearningAssistant
         public ICommand ButtonStartClick { get; set; }
         public ICommand ButtonStopClick { get; set; }
         public ICommand ButtonNewAssignmentClick { get; set; }
+        public ICommand ButtonOverviewHomeTasksClick { get; set; }
+        public ICommand ButtonOverviewDeadlinesClick { get; set; }
 
+        public void OverviewHomeTasks(object obj)
+        {
+           
+        }
+
+        public void OverviewDeadlines(object obj)
+        {
+
+        }
 
         public void StartBut(object obj)
         {
