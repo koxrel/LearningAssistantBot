@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearningAssistant"
         mc:Ignorable="d"
-        Title="Home Tasks Explorer" Height="350" Width="600">
+        Title="Home Tasks Explorer" Height="350" Width="600" ResizeMode="CanMinimize">
     <Window.Resources>
         <local:HoTaExplorerViewModel x:Key="HTEVM"/>
     </Window.Resources>

@@ -13,6 +13,7 @@ namespace LearningAssistant.ViewModels
 {
     abstract public class DetailsBaseViewModel<T>:INotifyPropertyChanged
     {
+
         public DetailsBaseViewModel()
         {
             ItemSet();
@@ -20,6 +21,7 @@ namespace LearningAssistant.ViewModels
             ButtonRemoveClick = new Command(RemoveBut);
         }
 
+        INavigator _nav = new Navigator();
         private IEnumerable<T> _items;
 
         public IEnumerable<T> Items
@@ -48,8 +50,8 @@ namespace LearningAssistant.ViewModels
 
         public async void AddBut(object obj)
         {
-            Navigator nav = new Navigator();
-            nav.NavigateTo("AdditionalWindow");
+            
+            _nav.NavigateTo("AdditionalWindow");
             await RefreshGrid();
         }
 
@@ -60,8 +62,8 @@ namespace LearningAssistant.ViewModels
 
         public void OnError(string ex)
         {
-            Navigator nav = new Navigator();
-            nav.ErrorCaught(ex);
+            
+            _nav.ErrorCaught(ex);
         }
 
         abstract public Task RefreshGrid();

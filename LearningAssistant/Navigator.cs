@@ -8,10 +8,10 @@ using System.Windows;
 
 namespace LearningAssistant
 {
-    class Navigator
+    class Navigator : INavigator
     {
 
-        Dictionary<string, Window> _dict = new Dictionary<string, Window>();
+        private Dictionary<string, Window> _dict = new Dictionary<string, Window>();
 
 
         public Navigator()
@@ -20,25 +20,20 @@ namespace LearningAssistant
             _dict.Add("HTE", new HoTaExplorer());
             _dict.Add("DE", new DeadlineExplorer());
             _dict.Add("UE", new UserExplorer());
-
         }
-        Window w;
+        
         public void NavigateTo(string name)
         {
+            Window w;
 
             if (_dict.TryGetValue(name, out w))
             {
-                w.ShowDialog();           
+                w.ShowDialog();                
+                _dict[name] = (Window)Activator.CreateInstance(_dict[name].GetType());         
             }
            
         }
-
-        public void CloseWindow(string name)
-        {
-
-
-        }
-
+       
         public void ErrorCaught(string ex)
         {
             MessageBox.Show($"Error occured: {ex}");
