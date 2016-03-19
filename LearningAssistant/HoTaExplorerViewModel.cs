@@ -57,9 +57,27 @@ namespace LearningAssistant
 
         public void RemoveBut(object obj)
         {
-            Navigator nav = new Navigator();
-            nav.NavigateTo("AdditionalWindow");
+            using (IDataAccess da = new DataAccess())
+            {
+                
+            }
         }
+
+        private bool _be;
+
+        public bool ButEnabled
+        {
+            get { return _be; }
+            set
+            {
+                _be = value;
+                OnPropertyChanged("Items");
+            }
+        }
+
+       
+
+
 
 
 
