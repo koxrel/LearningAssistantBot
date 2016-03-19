@@ -13,8 +13,6 @@ namespace LearningAssistant
 {
     public class HoTaExplorerViewModel : INotifyPropertyChanged
     {
-
-
         public HoTaExplorerViewModel()
         {
             ItemSet();
@@ -47,24 +45,46 @@ namespace LearningAssistant
 
         public ICommand ButtonAddClick { get; set; }
 
-        public void AddBut(object obj)
+        public async void AddBut(object obj)
         {
             Navigator nav = new Navigator();
-            nav.NavigateTo("AdditionalWindow");            
+            nav.NavigateTo("AdditionalWindow");
+           await RefreshGrid();          
         }
 
         public ICommand ButtonRemoveClick { get; set; }
 
         public async void RemoveBut(object obj)
         {
-            ButEnabled = false;
-            using (IDataAccess da = new DataAccess())
-            {
-               await da.RemoveHometask(SelectedItem);
-                await RefreshGrid(da);
-            }
 
-            ButEnabled = true;
+            if (SelectedItem == null)
+            {
+                OnError("Select something!");
+                return;
+            }
+            try
+            {
+
+                ButEnabled = false;
+                using (IDataAccess da = new DataAccess())
+                {
+                    await da.RemoveHometask(SelectedItem);
+                    await RefreshGrid(da);
+                }
+
+                ButEnabled = true;
+
+            }
+            catch(Exception ex)
+            {
+                OnError(ex.Message);
+            }
+        }
+
+        public void OnError(string ex)
+        {
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
         }
 
         public async Task RefreshGrid()
@@ -91,19 +111,10 @@ namespace LearningAssistant
             }
         }
 
-       
-
-
-
-
-
         private async void ItemSet()
         {
             await RefreshGrid();       
         }
-
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -111,6 +122,5 @@ namespace LearningAssistant
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }
