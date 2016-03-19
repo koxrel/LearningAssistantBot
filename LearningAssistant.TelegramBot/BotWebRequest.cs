@@ -29,6 +29,8 @@ namespace LearningAssistant.TelegramBot
 
         public bool IsActive => _cts != null && !_cts.IsCancellationRequested;
 
+        public event Action OnError;
+
         private readonly string _token;
         private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
 
@@ -40,6 +42,9 @@ namespace LearningAssistant.TelegramBot
         private async Task<Updates> GetUpdates()
         {
             var response = await _client.GetAsync($"https://api.telegram.org/bot{_token}/getupdates?offset={_lastUpdateId}");
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception();
 
             var result = await response.Content.ReadAsStringAsync();
 
@@ -79,10 +84,18 @@ namespace LearningAssistant.TelegramBot
 
         private async void Process(CancellationToken ct)
         {
-            while (!ct.IsCancellationRequested)
+            try
             {
-                var messages = (await GetUpdates()).UpdateArr;
-                await SendMessages(messages);
+                while (!ct.IsCancellationRequested)
+                {
+                    ct.ThrowIfCancellationRequested();
+                    var messages = (await GetUpdates()).UpdateArr;
+                    await SendMessages(messages);
+                }
+            }
+            catch (Exception)
+            {
+                OnError?.Invoke();
             }
         }
 
