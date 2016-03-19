@@ -43,6 +43,12 @@ namespace LearningAssistant
             }
         }
 
+        public void OnError(string ex)
+        {
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
+        }
+
         public ICommand ButtonAddClick { get; set; }
 
         IDataAccess da;
@@ -60,13 +66,11 @@ namespace LearningAssistant
             }
             catch (ArgumentNullException)
             {
-                Navigator nav = new Navigator();
-                nav.ErrorCaught("Specify all of the parameters!");
+                OnError("Specify all of the parameters!");
             }
             catch (Exception ex)
             {
-                Navigator nav = new Navigator();
-                nav.ErrorCaught(ex.Message);
+                OnError(ex.Message);
             }
             finally
             {

@@ -40,31 +40,64 @@ namespace LearningAssistant
         public void StartBut(object obj)
         {
             StartButEnabled = false;
-            StopButEnabled = true;
 
-            BotWebRequest.Bot.OnError += BotError;
-            BotWebRequest.Bot.StartProcessing();
-            if (BotWebRequest.Bot.IsActive)
-                StatusLabel = "active";
-            else
-                StatusLabel = "inactive";
+
+            try
+            {
+                BotWebRequest.Bot.OnError += BotError;
+                BotWebRequest.Bot.StartProcessing();
+                if (BotWebRequest.Bot.IsActive)
+                {
+                    StatusLabel = "active";
+                    StopButEnabled = true;
+                }
+                else
+                {
+                    StatusLabel = "inactive";
+                    StartButEnabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                OnError(ex.Message);
+                StartButEnabled = true;
+                StopButEnabled = false;
+            }
         }
 
         public void StopBut(object obj)
         {
-            StartButEnabled = true;
+            
             StopButEnabled = false;
+            try {
+                BotWebRequest.Bot.CancelProcessing();
+                if (BotWebRequest.Bot.IsActive)
+                {
+                    StatusLabel = "active";
+                    StopButEnabled = true;
+                }
+                else
+                {
+                    StatusLabel = "inactive";
+                    StartButEnabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                StartButEnabled = false;
+                StopButEnabled = true;
+                OnError(ex.Message);
+            }
+        }
 
-            BotWebRequest.Bot.CancelProcessing();
-            if (BotWebRequest.Bot.IsActive)
-                StatusLabel = "active";
-            else
-                StatusLabel = "inactive";
+        public void OnError(string ex)
+        {
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
         }
 
 
 
-      
         public void NABut(object obj)
         {
            new Navigator().NavigateTo("AdditionalWindow");
