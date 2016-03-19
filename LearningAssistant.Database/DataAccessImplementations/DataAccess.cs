@@ -109,19 +109,22 @@ namespace LearningAssistant.Database.DataAccessImplementations
 
         public async Task RemoveHometask(Hometask hometask)
         {
-            _db.Hometasks.Remove(hometask);
+            var hometaskDelete = await _db.Hometasks.FirstOrDefaultAsync(h => h.Id == hometask.Id);
+            _db.Hometasks.Remove(hometaskDelete);
             await _db.SaveChangesAsync();
         }
 
         public async Task RemoveDeadline(Deadline deadline)
         {
-            _db.Deadlines.Remove(deadline);
+            var deadlineDelete = await _db.Deadlines.FirstOrDefaultAsync(d => d.Id == deadline.Id);
+            _db.Deadlines.Remove(deadlineDelete);
             await _db.SaveChangesAsync();
         }
 
         public async Task RemoveUser(User user)
         {
-            _db.Users.Remove(user);
+            var userDelete = await _db.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+            _db.Users.Remove(userDelete);
             await _db.SaveChangesAsync();
         }
 
