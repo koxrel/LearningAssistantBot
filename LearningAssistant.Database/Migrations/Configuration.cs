@@ -1,3 +1,4 @@
+using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
 
 namespace LearningAssistant.Database.Migrations

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
+using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 

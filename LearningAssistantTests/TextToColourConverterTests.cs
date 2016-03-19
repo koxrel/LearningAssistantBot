@@ -1,9 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using LearningAssistant.Converters;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-namespace LearningAssistant.Tests
+namespace LearningAssistantTests
 {
     [TestClass()]
     public class TextToColourConverterTests

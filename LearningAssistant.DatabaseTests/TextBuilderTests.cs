@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LearningAssistant.Database.Tests
+namespace LearningAssistant.DatabaseTests
 {
     [TestClass()]
     public class TextBuilderTests

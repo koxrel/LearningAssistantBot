@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using LearningAssistant.Database.Entities;
 
-namespace LearningAssistant.Database
+namespace LearningAssistant.Database.Classes
 {
     //The class and all its methods are made static since they do not rely on state
     public static class TextBuilder
