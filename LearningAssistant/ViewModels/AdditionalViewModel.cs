@@ -54,9 +54,9 @@ namespace LearningAssistant
             {
                 da = new DataAccess();
                 if (Type)
-                    await Task.Factory.StartNew(() => da.AddDeadline(Subject, Description, DueDate));
+                    await da.AddDeadline(Subject, Description, DueDate);
                 else
-                    await Task.Factory.StartNew(() => da.AddHometask(Subject, Description, DueDate));
+                    await da.AddHometask(Subject, Description, DueDate);
             }
             catch (ArgumentNullException)
             {

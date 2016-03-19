@@ -9,33 +9,32 @@ using LearningAssistant.Database.Interfaces;
 using LearningAssistant.Database.DataAccessImplementations;
 using System.Windows.Input;
 
-namespace LearningAssistant
+namespace LearningAssistant.ViewModels
 {
-    public class HoTaExplorerViewModel : INotifyPropertyChanged
+    abstract public class DetailsBaseViewModel<T>:INotifyPropertyChanged
     {
-
-
-        public HoTaExplorerViewModel()
+        public DetailsBaseViewModel()
         {
             ItemSet();
             ButtonAddClick = new Command(AddBut);
             ButtonRemoveClick = new Command(RemoveBut);
         }
 
-        private IEnumerable<Hometask> _items;
+        private IEnumerable<T> _items;
 
-        public IEnumerable<Hometask> Items
+        public IEnumerable<T> Items
         {
             get { return _items; }
-            set {
+            set
+            {
                 _items = value;
                 OnPropertyChanged("Items");
             }
         }
 
-        private Hometask _si;
+        private T _si;
 
-        public Hometask SelectedItem
+        public T SelectedItem
         {
             get { return _si; }
             set
@@ -47,36 +46,30 @@ namespace LearningAssistant
 
         public ICommand ButtonAddClick { get; set; }
 
-        public void AddBut(object obj)
+        public async void AddBut(object obj)
         {
             Navigator nav = new Navigator();
-            nav.NavigateTo("AdditionalWindow");            
+            nav.NavigateTo("AdditionalWindow");
+            await RefreshGrid();
         }
 
         public ICommand ButtonRemoveClick { get; set; }
 
-        public async void RemoveBut(object obj)
-        {
-            ButEnabled = false;
-            using (IDataAccess da = new DataAccess())
-            {
-               await da.RemoveHometask(SelectedItem);
-                await RefreshGrid(da);
-            }
+        abstract public void RemoveBut(object obj);
+        
 
-            ButEnabled = true;
+        public void OnError(string ex)
+        {
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
         }
 
-        public async Task RefreshGrid()
-        {
-            IDataAccess mta = new DataAccess();
-            Items = await mta.GetHomeTasks();
-        }
+        abstract public Task RefreshGrid();
 
-        public async Task RefreshGrid(IDataAccess mta)
-        {
-            Items = await mta.GetHomeTasks();
-        }
+
+
+       abstract public Task RefreshGrid(IDataAccess mta);
+      
 
 
         private bool _be = true;
@@ -91,19 +84,10 @@ namespace LearningAssistant
             }
         }
 
-       
-
-
-
-
-
         private async void ItemSet()
         {
-            await RefreshGrid();       
+            await RefreshGrid();
         }
-
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -111,6 +95,6 @@ namespace LearningAssistant
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }
+
