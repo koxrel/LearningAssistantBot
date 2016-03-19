@@ -45,8 +45,8 @@ namespace LearningAssistant
 
         public void OnError(string ex)
         {
-            INavigator _nav = new Navigator();
-            _nav.ErrorCaught(ex);
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
         }
 
         public ICommand ButtonAddClick { get; set; }

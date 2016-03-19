@@ -91,7 +91,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="INavigator.cs" />
     <Compile Include="ViewModels\AdditionalViewModel.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ViewModels\DeadlineExplorerViewModel.cs" />

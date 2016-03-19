@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using LearningAssistant.TelegramBot;
-using System.Windows.Threading;
+
+
 
 namespace LearningAssistant
 {
     class ViewModel : INotifyPropertyChanged
     {
         public ViewModel()
-        {           
+        {
             ButtonStartClick = new Command(StartBut);
             ButtonStopClick = new Command(StopBut);
             ButtonNewAssignmentClick = new Command(NABut);
@@ -23,12 +24,10 @@ namespace LearningAssistant
             ButtonSendClick = new Command(SendMessage);
         }
 
-        INavigator _nav = new Navigator();
-
         public void BotError()
         {
-           
-            _nav.ErrorCaught("bot could not process requests");
+            Navigator nav = new Navigator();
+            nav.ErrorCaught("bot could not process requests");
             StatusLabel = "inactive";
         }
        
@@ -51,17 +50,17 @@ namespace LearningAssistant
 
         public void OverviewUsers(object obj)
         {
-            _nav.NavigateTo("UE");
+            new Navigator().NavigateTo("UE");
         }
 
         public void OverviewHomeTasks(object obj)
         {
-            _nav.NavigateTo("HTE");
+            new Navigator().NavigateTo("HTE");
         }
 
         public void OverviewDeadlines(object obj)
         {
-            _nav.NavigateTo("DE");
+            new Navigator().NavigateTo("DE");
         }
 
         public void StartBut(object obj)
@@ -120,15 +119,15 @@ namespace LearningAssistant
 
         public void OnError(string ex)
         {
-
-            _nav.ErrorCaught(ex);
+            Navigator nav = new Navigator();
+            nav.ErrorCaught(ex);
         }
 
 
 
         public void NABut(object obj)
         {
-            _nav.NavigateTo("AdditionalWindow");
+           new Navigator().NavigateTo("AdditionalWindow");
         }
 
         private string _status = "inactive";
