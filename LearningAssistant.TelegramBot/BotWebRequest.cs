@@ -19,8 +19,14 @@ namespace LearningAssistant.TelegramBot
     {
         private BotWebRequest()
         {
-            byte[] bytesToken = Convert.FromBase64String(ConfigurationManager.AppSettings[Environment.UserName]);
-            _token = Encoding.UTF8.GetString(ProtectedData.Unprotect(bytesToken, null, DataProtectionScope.CurrentUser));
+            try
+            {
+                _token = ConfigurationManager.AppSettings["APIKey"];
+            }
+            catch (Exception)
+            {
+                OnError?.Invoke();
+            }
         }
 
         private static BotWebRequest _bot;
@@ -29,7 +35,7 @@ namespace LearningAssistant.TelegramBot
 
         public bool IsActive => _cts != null && !_cts.IsCancellationRequested;
 
-        public event Action OnError;
+        public static event Action OnError;
 
         private readonly string _token;
         private const string Keyboard = @"{""keyboard"":[[""/homework_ielts"",""/homework_infotech""],[""/deadlines""]],""resize_keyboard"":true}";
