@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using LearningAssistant.Database.DataAccessImplementations;
+using LearningAssistant.Classes;
 using LearningAssistant.Database.Interfaces;
-using LearningAssistant.Database.Entities;
+using LearningAssistant.Interfaces;
 
-namespace LearningAssistant
+namespace LearningAssistant.ViewModels
 {
     class AdditionalViewModel : INotifyPropertyChanged
     {        

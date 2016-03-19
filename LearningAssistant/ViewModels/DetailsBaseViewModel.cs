@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
-using LearningAssistant.Database.DataAccessImplementations;
 using System.Windows.Input;
+using LearningAssistant.Classes;
+using LearningAssistant.Interfaces;
 
 namespace LearningAssistant.ViewModels
 {

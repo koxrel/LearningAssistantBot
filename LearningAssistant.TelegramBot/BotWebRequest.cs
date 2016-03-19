@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using LearningAssistant.Database;
-using LearningAssistant.Database.DataAccessImplementations;
-using LearningAssistant.Database.Interfaces;
 using LearningAssistant.TelegramBot.DTO;
 using Newtonsoft.Json;
 

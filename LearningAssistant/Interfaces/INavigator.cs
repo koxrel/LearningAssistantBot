@@ -1,4 +1,4 @@
-﻿namespace LearningAssistant
+﻿namespace LearningAssistant.Interfaces
 {
     interface INavigator
     {

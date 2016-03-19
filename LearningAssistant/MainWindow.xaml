@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:LearningAssistant"
+        xmlns:viewModels="clr-namespace:LearningAssistant.ViewModels"
+        xmlns:converters="clr-namespace:LearningAssistant.Converters"
         mc:Ignorable="d"
         Title="Dashboard: LearningAssistant bot" Height="291" Width="369" ResizeMode="CanMinimize" >
 
     <Window.Resources>
-        <local:ViewModel x:Key="MainViewModel"/>
-        <local:TextToColourConverter x:Key="TextToColour"/>
+        <viewModels:ViewModel x:Key="MainViewModel"/>
+        <converters:TextToColourConverter x:Key="TextToColour"/>
 
     </Window.Resources>
 

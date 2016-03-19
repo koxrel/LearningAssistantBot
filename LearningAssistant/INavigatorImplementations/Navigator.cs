@@ -1,12 +1,10 @@
-﻿using LearningAssistant.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using LearningAssistant.Interfaces;
+using LearningAssistant.Views;
 
-namespace LearningAssistant
+namespace LearningAssistant.INavigatorImplementations
 {
     class Navigator : INavigator
     {
@@ -16,8 +14,8 @@ namespace LearningAssistant
 
         public Navigator()
         {
-            _dict.Add("AdditionalWindow", new AddWindow());
-            _dict.Add("HTE", new HoTaExplorer());
+            _dict.Add("AdditionalWindow", new Views.AddWindow());
+            _dict.Add("HTE", new Views.HoTaExplorer());
             _dict.Add("DE", new DeadlineExplorer());
             _dict.Add("UE", new UserExplorer());
         }

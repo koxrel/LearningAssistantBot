@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LearningAssistant.Database.DataAccessImplementations;
+﻿using LearningAssistant.Database.DataAccessImplementations;
 using LearningAssistant.Database.Interfaces;
+using LearningAssistant.Interfaces;
+using LearningAssistant.INavigatorImplementations;
 
-
-namespace LearningAssistant
+namespace LearningAssistant.Classes
 {
     static class Factory
     {

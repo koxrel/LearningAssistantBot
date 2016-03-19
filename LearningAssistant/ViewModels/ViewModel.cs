@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
+using LearningAssistant.Classes;
+using LearningAssistant.Interfaces;
 using LearningAssistant.TelegramBot;
-using System.Windows.Threading;
+using Factory = LearningAssistant.Classes.Factory;
 
-namespace LearningAssistant
+namespace LearningAssistant.ViewModels
 {
     class ViewModel : INotifyPropertyChanged
     {
