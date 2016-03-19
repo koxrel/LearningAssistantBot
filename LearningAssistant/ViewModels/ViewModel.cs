@@ -32,6 +32,7 @@ namespace LearningAssistant
 
         public void StartBut(object obj)
         {
+            
             BotWebRequest.Bot.StartProcessing();
             if (BotWebRequest.Bot.IsActive)
                 StatusLabel = "active";
