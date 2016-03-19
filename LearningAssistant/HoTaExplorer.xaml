@@ -49,8 +49,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Button Name="buttonAdd" Margin="5 3" >Add</Button>
-            <Button Name="buttonRemove" Margin="5 3">Remove</Button>
+            <Button Command="{Binding ButtonAddClick}" Name="buttonAdd" Margin="5 3" >Add</Button>
+            <Button Command="{Binding ButtonRemoveClick}" Name="buttonRemove" Margin="5 3">Remove</Button>
         </StackPanel>
        
     </Grid>
