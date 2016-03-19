@@ -21,8 +21,8 @@
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Row="1" FontSize="16" Name="dataGridGrades" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Full name" Width="3*" Binding="{Binding Subject}"/>
-                <DataGridTextColumn Header="Chat ID"  Width="1*" Binding="{Binding DueDate}">
+                <DataGridTextColumn Header="Full name" Width="3*" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Chat ID"  Width="1*" Binding="{Binding ChatId}">
                     <DataGridTextColumn.CellStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
