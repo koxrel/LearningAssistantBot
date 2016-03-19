@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:LearningAssistant"
         mc:Ignorable="d"
-        Title="Dashboard: LearningAssistant bot" Height="291" Width="369" ResizeMode="CanMinimize">
+        Title="Dashboard: LearningAssistant bot" Height="291" Width="369" ResizeMode="CanMinimize" >
 
     <Window.Resources>
         <local:ViewModel x:Key="MainViewModel"/>
@@ -13,7 +13,7 @@
 
     </Window.Resources>
 
-    <Grid DataContext="{Binding Source={StaticResource MainViewModel}}">
+    <Grid DataContext="{Binding Source={StaticResource MainViewModel}}" >
 
         <DockPanel LastChildFill='False'>
             <Menu DockPanel.Dock='Top'  Margin="0,0,-135,0" Height="25">
@@ -43,7 +43,7 @@
         <Button x:Name="OHT" FontSize="16" Background="LemonChiffon" Content="Overview home tasks" HorizontalAlignment="Left" Margin="20,60,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewHomeTasksClick}" Width="175" Height="35"/>
         <Button x:Name="OD" FontSize="16" Background="AliceBlue" Content="Overview deadlines" HorizontalAlignment="Left" Margin="20,95,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewDeadlinesClick}" Width="175" Height="35"/>
         <Button x:Name="OU" FontSize="16" Background="LightGray" Content="Overview users" HorizontalAlignment="Left" Margin="20,130,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonOverviewUsersClick}" Width="175" Height="35"/>
-        <TextBox x:Name="APIbox" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Left" Height="30" Margin="10,177,0,0" Grid.Row="1" Text="{Binding Message}" TextWrapping="Wrap" VerticalAlignment="Top" Width="265">
+        <TextBox x:Name="APIbox" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Left" Height="30" Margin="10,177,0,0" Grid.Row="1" Text="{Binding Message}" TextWrapping="Wrap" VerticalAlignment="Top" Width="285">
             <TextBox.Resources>
                 <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.4" Stretch="None" AlignmentX="Left" >
                     <VisualBrush.Visual>
@@ -65,7 +65,7 @@
             </TextBox.Style>
 
         </TextBox>
-        <Button x:Name="Send" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="50,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
+        <Button x:Name="Send" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="70,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>
