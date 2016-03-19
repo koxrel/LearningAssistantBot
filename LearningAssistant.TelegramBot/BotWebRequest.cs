@@ -105,12 +105,18 @@ namespace LearningAssistant.TelegramBot
             }
         }
 
-        private async void SendBulkMessage()
+        public async void SendBulkMessage(string message)
         {
-            
+            foreach (var user in await Factory.DataAccess.GetUsers())
+            {
+                if (_cts.IsCancellationRequested) return;
+                await _client.GetAsync(
+                    $"https://api.telegram.org/bot{_token}/sendmessage?chat_id={user.ChatId}&text={message}&reply_markup={Keyboard}");
+                await Task.Delay(300);
+            }
         }
 
-    public void StartProcessing()
+        public void StartProcessing()
         {
             _cts = new CancellationTokenSource();
             Task.Run(() => Process(_cts.Token));
