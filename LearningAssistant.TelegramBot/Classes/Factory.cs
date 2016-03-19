@@ -1,7 +1,7 @@
 ﻿using LearningAssistant.Database.DataAccessImplementations;
 using LearningAssistant.Database.Interfaces;
 
-namespace LearningAssistant.TelegramBot
+namespace LearningAssistant.TelegramBot.Classes
 {
     public static class Factory
     {
