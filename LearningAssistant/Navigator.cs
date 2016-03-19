@@ -19,6 +19,7 @@ namespace LearningAssistant
             _dict.Add("AdditionalWindow", new AddWindow());
             _dict.Add("HTE", new HoTaExplorer());
             _dict.Add("DE", new DeadlineExplorer());
+            _dict.Add("UE", new UserExplorer());
 
         }
         Window w;
