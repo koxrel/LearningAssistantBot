@@ -21,7 +21,7 @@ namespace LearningAssistant.ViewModels
             ButtonRemoveClick = new Command(RemoveBut);
         }
 
-        INavigator _nav = new Navigator();
+        INavigator _nav;
         private IEnumerable<T> _items;
 
         public IEnumerable<T> Items
@@ -50,7 +50,8 @@ namespace LearningAssistant.ViewModels
 
         public async void AddBut(object obj)
         {
-            
+            if (_nav == null)
+                _nav = new Navigator();              
             _nav.NavigateTo("AdditionalWindow");
             await RefreshGrid();
         }
@@ -62,7 +63,8 @@ namespace LearningAssistant.ViewModels
 
         public void OnError(string ex)
         {
-            
+            if (_nav == null)
+                _nav = new Navigator();
             _nav.ErrorCaught(ex);
         }
 
