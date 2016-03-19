@@ -39,8 +39,10 @@ namespace LearningAssistant
 
         public void StartBut(object obj)
         {
-            
-            BotWebRequest.Bot.OnError += BotError;            
+            StartButEnabled = false;
+            StopButEnabled = true;
+
+            BotWebRequest.Bot.OnError += BotError;
             BotWebRequest.Bot.StartProcessing();
             if (BotWebRequest.Bot.IsActive)
                 StatusLabel = "active";
@@ -50,6 +52,9 @@ namespace LearningAssistant
 
         public void StopBut(object obj)
         {
+            StartButEnabled = true;
+            StopButEnabled = false;
+
             BotWebRequest.Bot.CancelProcessing();
             if (BotWebRequest.Bot.IsActive)
                 StatusLabel = "active";
@@ -74,6 +79,30 @@ namespace LearningAssistant
             {
                 _status = value;
                 OnPropertyChanged("StatusLabel");
+            }
+        }
+
+        private bool _startbe = true;
+
+        public bool StartButEnabled
+        {
+            get { return _startbe; }
+            set
+            {
+                _startbe = value;
+                OnPropertyChanged("StartButEnabled");
+            }
+        }
+
+        private bool _stopbe = false;
+
+        public bool StopButEnabled
+        {
+            get { return _stopbe; }
+            set
+            {
+                _stopbe = value;
+                OnPropertyChanged("StopButEnabled");
             }
         }
 
