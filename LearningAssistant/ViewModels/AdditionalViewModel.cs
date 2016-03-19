@@ -45,7 +45,7 @@ namespace LearningAssistant
 
         public void OnError(string ex)
         {
-            INavigator _nav = new Navigator();
+            INavigator _nav = Factory.GetNavigator;
             _nav.ErrorCaught(ex);
         }
 
@@ -58,7 +58,7 @@ namespace LearningAssistant
             AddEnabled = false;
             try
             {
-                da = new DataAccess();
+                da = Factory.GetDataAccess;
                 if (Type)
                     await da.AddDeadline(Subject, Description, DueDate);
                 else

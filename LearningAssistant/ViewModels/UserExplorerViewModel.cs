@@ -25,7 +25,7 @@ namespace LearningAssistant.ViewModels
         {
             try
             {
-                using (IDataAccess mta = new DataAccess())
+                using (IDataAccess mta = Factory.GetDataAccess)
                 {
                     Items = await mta.GetUsers();
                 }
@@ -59,7 +59,7 @@ namespace LearningAssistant.ViewModels
             {
 
                 ButEnabled = false;
-                using (IDataAccess da = new DataAccess())
+                using (IDataAccess da = Factory.GetDataAccess)
                 {
                     await da.RemoveUser(SelectedItem);
                     await RefreshGrid(da);

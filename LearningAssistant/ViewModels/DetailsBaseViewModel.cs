@@ -51,7 +51,7 @@ namespace LearningAssistant.ViewModels
         public async void AddBut(object obj)
         {
             if (_nav == null)
-                _nav = new Navigator();              
+                _nav = Factory.GetNavigator;              
             _nav.NavigateTo("AdditionalWindow");
             await RefreshGrid();
         }
@@ -64,7 +64,7 @@ namespace LearningAssistant.ViewModels
         public void OnError(string ex)
         {
             if (_nav == null)
-                _nav = new Navigator();
+                _nav = Factory.GetNavigator;
             _nav.ErrorCaught(ex);
         }
 

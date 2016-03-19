@@ -23,7 +23,7 @@ namespace LearningAssistant
             ButtonSendClick = new Command(SendMessage);
         }
 
-        INavigator _nav = new Navigator();
+        INavigator _nav = Factory.GetNavigator;
 
         public void BotError()
         {
