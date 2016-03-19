@@ -19,26 +19,23 @@
             <ColumnDefinition Width="67*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="37*"/>
             <RowDefinition Height="45*"/>
-            <RowDefinition Height="75*"/>
-            <RowDefinition Height="45*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="70*"/>
             <RowDefinition Height="52*"/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock FontSize="16" x:Name="TypeBlock" HorizontalAlignment="Left" Margin="70,9,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Height="25" Width="65"/>
         <TextBlock FontSize="16" x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="70,5,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Subject" VerticalAlignment="Top" Height="29" Width="65" Grid.Row="1"/>
-        <TextBlock FontSize="16" x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="0,11,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Summary module" VerticalAlignment="Top" Height="36" Width="135" Grid.Row="2" Grid.RowSpan="2"/>
-        <TextBlock FontSize="16" x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="40,4,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="28" Width="95" Grid.Row="3"/>
-        <TextBlock FontSize="16" x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="40,9,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Due date" VerticalAlignment="Top" Height="25" Width="95" Grid.Row="4"/>
-        <Button x:Name="AddButton" Content="Add" IsEnabled="{Binding AddEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding ButtonAddClick}" FontSize="18"  Background="Beige"  Grid.Column="1" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" Height="30"/>
+        <TextBlock FontSize="16" x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="40,4,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="28" Width="95" Grid.Row="2"/>
+        <TextBlock FontSize="16" x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="40,9,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Due date" VerticalAlignment="Top" Height="25" Width="95" Grid.Row="3"/>
+        <Button x:Name="AddButton" Content="Add" IsEnabled="{Binding AddEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding ButtonAddClick}" FontSize="18"  Background="Beige"  Grid.Column="1" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" Height="30"/>
         <RadioButton FontSize="16" IsChecked="{Binding Type, UpdateSourceTrigger=PropertyChanged}" x:Name="DeadlineRB" Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Height="20" Width="84"/>
         <RadioButton FontSize="16" x:Name="HomeTaskRB" Content="Home task" Grid.Column="1" HorizontalAlignment="Left" Margin="108,10,0,0" VerticalAlignment="Top" Height="20" Width="99"/>
         <TextBox Text="{Binding Subject,UpdateSourceTrigger=PropertyChanged}" FontSize="16" x:Name="SubjectBox" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="3,5,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244"/>
-        <TextBox Text="{Binding SumModule,UpdateSourceTrigger=PropertyChanged}" FontSize="16" x:Name="SummaryBox" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="3,10,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244"/>
-        <TextBox Text="{Binding Description,UpdateSourceTrigger=PropertyChanged}" FontSize="16" x:Name="DescriptionBox" Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="3,5,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244"/>
-        <xctk:DateTimePicker Value="{Binding DueDate, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Column="1"  HorizontalAlignment="Left" Margin="3,5,0,0" Grid.Row="4" VerticalAlignment="Top" Width="244" Height="35"/>
+        <TextBox Text="{Binding Description,UpdateSourceTrigger=PropertyChanged}" FontSize="16" x:Name="DescriptionBox" Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="3,5,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244"/>
+        <xctk:DateTimePicker Value="{Binding DueDate, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Column="1"  HorizontalAlignment="Left" Margin="3,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="244" Height="35"/>
 
     </Grid>
 </Window>

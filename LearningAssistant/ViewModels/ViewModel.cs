@@ -24,14 +24,7 @@ namespace LearningAssistant
         }
 
         INavigator _nav = Factory.GetNavigator;
-
-        public void BotError()
-        {
-           
-            _nav.ErrorCaught("bot could not process requests");
-            StatusLabel = "inactive";
-        }
-       
+        
         public ICommand ButtonStartClick { get; set; }
         public ICommand ButtonStopClick { get; set; }
         public ICommand ButtonNewAssignmentClick { get; set; }
@@ -39,97 +32,6 @@ namespace LearningAssistant
         public ICommand ButtonOverviewDeadlinesClick { get; set; }
         public ICommand ButtonOverviewUsersClick { get; set; }
         public ICommand ButtonSendClick { get; set; }
-
-        public void SendMessage(object obj)
-        {
-            if (!string.IsNullOrWhiteSpace(Message))
-            {
-                BotWebRequest.Bot.SendBulkMessage(Message);
-            }
-            Message = string.Empty;
-        }
-
-        public void OverviewUsers(object obj)
-        {
-            _nav.NavigateTo("UE");
-        }
-
-        public void OverviewHomeTasks(object obj)
-        {
-            _nav.NavigateTo("HTE");
-        }
-
-        public void OverviewDeadlines(object obj)
-        {
-            _nav.NavigateTo("DE");
-        }
-
-        public void StartBut(object obj)
-        {
-            StartButEnabled = false;
-
-
-            try
-            {
-                
-                BotWebRequest.OnError += BotError;
-                BotWebRequest.Bot.StartProcessing();
-                if (BotWebRequest.Bot.IsActive)
-                {
-                    StatusLabel = "active";
-                    StopButEnabled = true;
-                }
-                else
-                {
-                    StatusLabel = "inactive";
-                    StartButEnabled = true;
-                }
-            }
-            catch(Exception ex)
-            {
-                OnError(ex.Message);
-                StartButEnabled = true;
-                StopButEnabled = false;
-            }
-        }
-
-        public void StopBut(object obj)
-        {
-            
-            StopButEnabled = false;
-            try {
-                BotWebRequest.Bot.CancelProcessing();
-                if (BotWebRequest.Bot.IsActive)
-                {
-                    StatusLabel = "active";
-                    StopButEnabled = true;
-                }
-                else
-                {
-                    StatusLabel = "inactive";
-                    StartButEnabled = true;
-                }
-            }
-            catch(Exception ex)
-            {
-                StartButEnabled = false;
-                StopButEnabled = true;
-                OnError(ex.Message);
-            }
-        }
-
-        public void OnError(string ex)
-        {
-
-            _nav.ErrorCaught(ex);
-        }
-
-
-
-        public void NABut(object obj)
-        {
-            _nav.NavigateTo("AdditionalWindow");
-        }
 
         private string _status = "inactive";
 
@@ -179,7 +81,96 @@ namespace LearningAssistant
             }
         }
 
+        public void BotError()
+        {
+           
+            _nav.ErrorCaught("bot could not process requests");
+            StatusLabel = "inactive";
+        }       
 
+        public void SendMessage(object obj)
+        {
+            if (!string.IsNullOrWhiteSpace(Message))
+            {
+                BotWebRequest.Bot.SendBulkMessage(Message);
+            }
+            Message = string.Empty;
+        }
+
+        public void OverviewUsers(object obj)
+        {
+            _nav.NavigateTo("UE");
+        }
+
+        public void OverviewHomeTasks(object obj)
+        {
+            _nav.NavigateTo("HTE");
+        }
+
+        public void OverviewDeadlines(object obj)
+        {
+            _nav.NavigateTo("DE");
+        }
+
+        public void StartBut(object obj)
+        {
+            StartButEnabled = false;
+            try
+            {                
+                BotWebRequest.OnError += BotError;
+                BotWebRequest.Bot.StartProcessing();
+                if (BotWebRequest.Bot.IsActive)
+                {
+                    StatusLabel = "active";
+                    StopButEnabled = true;
+                }
+                else
+                {
+                    StatusLabel = "inactive";
+                    StartButEnabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                OnError(ex.Message);
+                StartButEnabled = true;
+                StopButEnabled = false;
+            }
+        }
+
+        public void StopBut(object obj)
+        {            
+            StopButEnabled = false;
+            try {
+                BotWebRequest.Bot.CancelProcessing();
+                if (BotWebRequest.Bot.IsActive)
+                {
+                    StatusLabel = "active";
+                    StopButEnabled = true;
+                }
+                else
+                {
+                    StatusLabel = "inactive";
+                    StartButEnabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                StartButEnabled = false;
+                StopButEnabled = true;
+                OnError(ex.Message);
+            }
+        }
+
+        public void OnError(string ex)
+        {
+            _nav.ErrorCaught(ex);
+        }
+
+        public void NABut(object obj)
+        {
+            _nav.NavigateTo("AdditionalWindow");
+        }
         
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

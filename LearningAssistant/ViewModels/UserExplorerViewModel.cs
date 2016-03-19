@@ -14,12 +14,7 @@ namespace LearningAssistant.ViewModels
 {
     class UserExplorerViewModel : DetailsBaseViewModel<User>
     {
-        public UserExplorerViewModel() : base()
-        {
-
-        }
-
-       
+        public UserExplorerViewModel() : base() { }
 
         public override async Task RefreshGrid()
         {
@@ -57,16 +52,13 @@ namespace LearningAssistant.ViewModels
             }
             try
             {
-
                 ButEnabled = false;
                 using (IDataAccess da = Factory.GetDataAccess)
                 {
                     await da.RemoveUser(SelectedItem);
                     await RefreshGrid(da);
                 }
-
                 ButEnabled = true;
-
             }
             catch (Exception ex)
             {
@@ -74,5 +66,4 @@ namespace LearningAssistant.ViewModels
             }
         }
     }
- 
 }

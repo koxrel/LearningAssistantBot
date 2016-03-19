@@ -14,10 +14,7 @@ namespace LearningAssistant.ViewModels
 {
     class DeadlineExplorerViewModel : DetailsBaseViewModel<Deadline>
     {
-        public DeadlineExplorerViewModel() : base()
-        {
-
-        }
+        public DeadlineExplorerViewModel() : base() { }
 
         public override async Task RefreshGrid()
         {
@@ -55,16 +52,13 @@ namespace LearningAssistant.ViewModels
             }
             try
             {
-
                 ButEnabled = false;
                 using (IDataAccess da = Factory.GetDataAccess)
                 {
                     await da.RemoveDeadline(SelectedItem);
                     await RefreshGrid(da);
                 }
-
                 ButEnabled = true;
-
             }
             catch (Exception ex)
             {

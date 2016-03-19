@@ -12,12 +12,13 @@ using LearningAssistant.Database.Entities;
 namespace LearningAssistant
 {
     class AdditionalViewModel : INotifyPropertyChanged
-    {
-        
+    {        
         public AdditionalViewModel()
         {
             ButtonAddClick = new Command(BAddClick);
         }
+
+        public ICommand ButtonAddClick { get; set; }
 
         private bool _ae = true;
 
@@ -43,43 +44,6 @@ namespace LearningAssistant
             }
         }
 
-        public void OnError(string ex)
-        {
-            INavigator _nav = Factory.GetNavigator;
-            _nav.ErrorCaught(ex);
-        }
-
-        public ICommand ButtonAddClick { get; set; }
-
-        IDataAccess da;
-
-        public async void BAddClick(object obj)
-        {
-            AddEnabled = false;
-            try
-            {
-                da = Factory.GetDataAccess;
-                if (Type)
-                    await da.AddDeadline(Subject, Description, DueDate);
-                else
-                    await da.AddHometask(Subject, Description, DueDate);
-            }
-            catch (ArgumentNullException)
-            {
-                OnError("Specify all of the parameters!");
-            }
-            catch (Exception ex)
-            {
-                OnError(ex.Message);
-            }
-            finally
-            {
-                da.Dispose();
-            }
-
-            AddEnabled = true;
-        }
-
         private string _subject;
 
         public string Subject
@@ -91,18 +55,9 @@ namespace LearningAssistant
                 OnPropertyChanged("Subject");
             }
         }
-        private string _summodule;
-        public string SumModule
-        {
-            get { return _summodule; }
-            set
-            {
-                _summodule = value;
-                OnPropertyChanged("SumModule");
-            }
-        }
 
         private string _desctript;
+
         public string Description
         {
             get { return _desctript; }
@@ -114,6 +69,7 @@ namespace LearningAssistant
         }
 
         private DateTime _duedate = DateTime.Today;
+
         public DateTime DueDate
         {
             get { return _duedate; }
@@ -124,19 +80,42 @@ namespace LearningAssistant
             }
         }
 
+        public void OnError(string ex)
+        {
+            INavigator _nav = Factory.GetNavigator;
+            _nav.ErrorCaught(ex);
+        }          
 
-
-
-
-
+        public async void BAddClick(object obj)
+        {           
+            AddEnabled = false;
+            try
+            {
+                using (IDataAccess da = Factory.GetDataAccess)
+                {
+                    if (Type)
+                        await da.AddDeadline(Subject, Description, DueDate);
+                    else
+                        await da.AddHometask(Subject, Description, DueDate);
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                OnError("Specify all of the parameters!");
+            }
+            catch (Exception ex)
+            {
+                OnError(ex.Message);
+            }
+            AddEnabled = true;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
     }
-
 }

@@ -14,30 +14,28 @@ namespace LearningAssistant
 {
     public class HoTaExplorerViewModel : DetailsBaseViewModel<Hometask>
     {
-        public HoTaExplorerViewModel() : base()
-        {
-
-        }
+        public HoTaExplorerViewModel() : base() { }
 
         public override async Task RefreshGrid()
         {
-            try {
+            try
+            {
                 using (IDataAccess mta = Factory.GetDataAccess)
                 {
                     Items = await mta.GetHomeTasks();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 OnError(ex.Message);
-            }    
+            }
         }
 
         public override async Task RefreshGrid(IDataAccess mta)
         {
             try
-            {                
-                    Items = await mta.GetHomeTasks();                
+            {
+                Items = await mta.GetHomeTasks();
             }
             catch (Exception ex)
             {
@@ -54,16 +52,13 @@ namespace LearningAssistant
             }
             try
             {
-
                 ButEnabled = false;
                 using (IDataAccess da = Factory.GetDataAccess)
                 {
                     await da.RemoveHometask(SelectedItem);
                     await RefreshGrid(da);
                 }
-
                 ButEnabled = true;
-
             }
             catch (Exception ex)
             {

@@ -11,11 +11,9 @@ using System.Windows.Input;
 
 namespace LearningAssistant.ViewModels
 {
-    
-    abstract public class DetailsBaseViewModel<T>:INotifyPropertyChanged
+
+    public abstract class DetailsBaseViewModel<T>:INotifyPropertyChanged
     {
-
-
         public DetailsBaseViewModel()
         {            
             ItemSet();
@@ -24,6 +22,10 @@ namespace LearningAssistant.ViewModels
         }
 
         INavigator _nav;
+
+        public ICommand ButtonAddClick { get; set; }
+        public ICommand ButtonRemoveClick { get; set; }
+
         private IEnumerable<T> _items;
 
         public IEnumerable<T> Items
@@ -48,36 +50,6 @@ namespace LearningAssistant.ViewModels
             }
         }
 
-        public ICommand ButtonAddClick { get; set; }
-
-        public async void AddBut(object obj)
-        {
-            if (_nav == null)
-                _nav = Factory.GetNavigator;              
-            _nav.NavigateTo("AdditionalWindow");
-            await RefreshGrid();
-        }
-
-        public ICommand ButtonRemoveClick { get; set; }
-
-        abstract public void RemoveBut(object obj);
-        
-
-        public void OnError(string ex)
-        {
-            if (_nav == null)
-                _nav = Factory.GetNavigator;
-            _nav.ErrorCaught(ex);
-        }
-
-        abstract public Task RefreshGrid();
-
-
-
-       abstract public Task RefreshGrid(IDataAccess mta);
-      
-
-
         private bool _be = true;
 
         public bool ButEnabled
@@ -90,10 +62,31 @@ namespace LearningAssistant.ViewModels
             }
         }
 
+        public async void AddBut(object obj)
+        {
+            if (_nav == null)
+                _nav = Factory.GetNavigator;              
+            _nav.NavigateTo("AdditionalWindow");
+            await RefreshGrid();
+        }        
+
+        
+
+        public void OnError(string ex)
+        {
+            if (_nav == null)
+                _nav = Factory.GetNavigator;
+            _nav.ErrorCaught(ex);
+        }
+
         private async void ItemSet()
         {
             await RefreshGrid();
         }
+
+        public abstract void RemoveBut(object obj);
+        public abstract Task RefreshGrid();
+        public abstract Task RefreshGrid(IDataAccess mta);
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

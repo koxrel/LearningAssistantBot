@@ -19,11 +19,10 @@
             <Menu DockPanel.Dock='Top'  Margin="0,0,-135,0" Height="25">
                 <MenuItem FontSize="16" Header='_Actions'>
                     <MenuItem Background="GreenYellow" Header='Start' Command="{Binding ButtonStartClick}" />
-                    <MenuItem Background="Tomato" Header='Stop' Command="{Binding ButtonStopClick}"/>
-                    <MenuItem Background="Beige" Header='New Asessment' Command="{Binding ButtonNewAssignmentClick}" />
+                    <MenuItem Background="Tomato" Header='Stop' Command="{Binding ButtonStopClick}"/>                    
                     <MenuItem Background="AliceBlue" Header='Overview deadlines' Command="{Binding ButtonOverviewDeadlinesClick}" />
                     <MenuItem Background="LemonChiffon" Header='Overview home tasks'  Command="{Binding ButtonOverviewHomeTasksClick}" />
-                    <MenuItem Background="Gray" Header='Exit'/>
+                    <MenuItem Visibility="Collapsed" Background="Gray" Header='Exit'/>
                 </MenuItem>
                 <MenuItem FontSize="16" Header='_About'>
                     <MenuItem  Header='Info'/>
@@ -65,7 +64,7 @@
             </TextBox.Style>
 
         </TextBox>
-        <Button x:Name="Send" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="70,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
+        <Button x:Name="Send" IsDefault="True" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="70,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="46*"/>
