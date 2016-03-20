@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LearningAssistant.Database.Classes;
 using LearningAssistant.Database.Entities;
+using LearningAssistant.Database.EntitiesInterfaces;
 using LearningAssistant.Database.Interfaces;
 
 namespace LearningAssistant.Database.DataAccessImplementations
@@ -19,7 +20,7 @@ namespace LearningAssistant.Database.DataAccessImplementations
             _db = new Context();
         }
 
-        public async Task<IEnumerable<Deadline>> GetCurrentDeadlines()
+        public async Task<IEnumerable<IDeadline>> GetCurrentDeadlines()
         {
             return await _db.Deadlines
                 .Where(a => a.DueDate >= DateTime.Now)
@@ -27,31 +28,31 @@ namespace LearningAssistant.Database.DataAccessImplementations
                 .ToArrayAsync();
         }
 
-        public async Task<IEnumerable<Deadline>> GetDeadlines()
+        public async Task<IEnumerable<IDeadline>> GetDeadlines()
         {
             return await _db.Deadlines.ToArrayAsync();
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<IUser>> GetUsers()
         {
             return await _db.Users.ToArrayAsync();
         }
 
-        public async Task<Hometask> GetCurrentIeltsHometask()
+        public async Task<IHometask> GetCurrentIeltsHometask()
         {
             return await _db.Hometasks
                 .OrderBy(h => h.DueDate)
                 .FirstOrDefaultAsync(h => h.Subject == "IELTS" && h.DueDate > DateTime.Now);
         }
 
-        public async Task<Hometask> GetCurrentInfoTechHometask()
+        public async Task<IHometask> GetCurrentInfoTechHometask()
         {
             return await _db.Hometasks
                 .OrderBy(h => h.DueDate)
                 .FirstOrDefaultAsync(h => h.Subject == "InfoTech" && h.DueDate > DateTime.Now);
         }
 
-        public async Task<IEnumerable<Hometask>> GetHomeTasks()
+        public async Task<IEnumerable<IHometask>> GetHomeTasks()
         {
             return await _db.Hometasks.ToArrayAsync();
         }
@@ -112,21 +113,21 @@ namespace LearningAssistant.Database.DataAccessImplementations
             });
         }
 
-        public async Task RemoveHometask(Hometask hometask)
+        public async Task RemoveHometask(IHometask hometask)
         {
             var hometaskDelete = await _db.Hometasks.FirstOrDefaultAsync(h => h.Id == hometask.Id);
             _db.Hometasks.Remove(hometaskDelete);
             await _db.SaveChangesAsync();
         }
 
-        public async Task RemoveDeadline(Deadline deadline)
+        public async Task RemoveDeadline(IDeadline deadline)
         {
             var deadlineDelete = await _db.Deadlines.FirstOrDefaultAsync(d => d.Id == deadline.Id);
             _db.Deadlines.Remove(deadlineDelete);
             await _db.SaveChangesAsync();
         }
 
-        public async Task RemoveUser(User user)
+        public async Task RemoveUser(IUser user)
         {
             var userDelete = await _db.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
             _db.Users.Remove(userDelete);

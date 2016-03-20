@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.Database.Interfaces
 {
@@ -10,18 +11,18 @@ namespace LearningAssistant.Database.Interfaces
         Task AddDeadline(Deadline deadline);
         Task AddHometask(Hometask hometask);
         Task AddUser(User user);
-        Task<IEnumerable<Deadline>> GetCurrentDeadlines();
-        Task<Hometask> GetCurrentIeltsHometask();
-        Task<Hometask> GetCurrentInfoTechHometask();
-        Task<IEnumerable<User>> GetUsers();
-        Task<IEnumerable<Deadline>> GetDeadlines();
-        Task<IEnumerable<Hometask>> GetHomeTasks();
+        Task<IEnumerable<IDeadline>> GetCurrentDeadlines();
+        Task<IHometask> GetCurrentIeltsHometask();
+        Task<IHometask> GetCurrentInfoTechHometask();
+        Task<IEnumerable<IUser>> GetUsers();
+        Task<IEnumerable<IDeadline>> GetDeadlines();
+        Task<IEnumerable<IHometask>> GetHomeTasks();
         Task RemoveOldRecords();
         Task AddDeadline(string subject, string description, DateTime dueDate);
         Task AddUser(string fullname, int chatId);
         Task AddHometask(string subject, string description, DateTime dueDate);
-        Task RemoveDeadline(Deadline deadline);
-        Task RemoveUser(User user);
-        Task RemoveHometask(Hometask hometask);
+        Task RemoveDeadline(IDeadline deadline);
+        Task RemoveUser(IUser user);
+        Task RemoveHometask(IHometask hometask);
     }
 }
