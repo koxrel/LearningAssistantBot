@@ -4,6 +4,8 @@ namespace LearningAssistant.TelegramBot.DTO
 {
     public class User
     {
+        [JsonProperty("result")]
+        public User UserContainer { get; set; }
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("first_name")]

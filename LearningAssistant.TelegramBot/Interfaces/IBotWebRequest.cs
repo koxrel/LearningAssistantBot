@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace LearningAssistant.TelegramBot.Interfaces
 {
@@ -7,7 +8,7 @@ namespace LearningAssistant.TelegramBot.Interfaces
         bool IsActive { get; }
 
         event Action OnError;
-
+        Task GetBotName();
         void CancelProcessing();
         void SendBulkMessage(string message);
         void StartProcessing();

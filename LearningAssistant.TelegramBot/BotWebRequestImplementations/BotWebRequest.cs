@@ -9,6 +9,7 @@ using LearningAssistant.TelegramBot.Classes;
 using LearningAssistant.TelegramBot.DTO;
 using LearningAssistant.TelegramBot.Interfaces;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
 {
@@ -20,13 +21,16 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
             {
                 _token = ConfigurationManager.AppSettings["APIKey"];
             }
-            catch (Exception)
+            catch (ConfigurationErrorsException)
             {
-                OnError?.Invoke();
+                throw new ConfigurationErrorsException("Could not load API Key from App.config!");
             }
         }
 
         public bool IsActive => _cts != null && !_cts.IsCancellationRequested;
+
+        public string BotName { get; private set; }
+        public string BotUsername { get; private set; }
 
         public event Action OnError;
 
@@ -120,7 +124,7 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
             }
         }
 
-        public async Task<string> GetBotName()
+        public async Task GetBotName()
         {
             var response = await _client.GetAsync($"https://api.telegram.org/bot{_token}/getme");
 
@@ -128,7 +132,8 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
 
             var user = await Task<User>.Factory.StartNew(() => JsonConvert.DeserializeObject<User>(result));
 
-            return user.Username;
+            BotName = user.UserContainer.Name;
+            BotUsername = user.UserContainer.Username;
         }
 
         public void StartProcessing()
