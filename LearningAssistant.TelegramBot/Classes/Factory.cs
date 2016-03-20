@@ -5,17 +5,9 @@ namespace LearningAssistant.TelegramBot.Classes
 {
     public static class Factory
     {
-        static IDataAccess _dataAccess;
+        private static IDataAccess _dataAccess;
 
-        public static IDataAccess DataAccess
-        {
-            get
-            {
-                _dataAccess?.Dispose();
-                _dataAccess = new DataAccess();
-                return _dataAccess;
-            }
-        }
+        public static IDataAccess DataAccess => _dataAccess ?? (_dataAccess = new DataAccess());
 
         public static void DisposeDataAccess()
         {

@@ -93,9 +93,11 @@ namespace LearningAssistant.TelegramBot.Classes
                     var messages = (await GetUpdates()).UpdateArr;
                     await SendMessages(messages);
                 }
+                Factory.DisposeDataAccess();
             }
             catch (Exception)
             {
+                Factory.DisposeDataAccess();
                 OnError?.Invoke();
             }
         }
@@ -114,6 +116,7 @@ namespace LearningAssistant.TelegramBot.Classes
             }
             catch (Exception)
             {
+                Factory.DisposeDataAccess();
                 OnError?.Invoke();
             }
         }
