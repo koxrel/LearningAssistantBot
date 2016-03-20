@@ -14,7 +14,7 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
 {
     public class BotWebRequest : IBotWebRequest
     {
-        private BotWebRequest()
+        public BotWebRequest()
         {
             try
             {
