@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using LearningAssistant.Classes;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.ViewModels
 {
-    public class HoTaExplorerViewModel : DetailsBaseViewModel<Hometask>
+    public class HoTaExplorerViewModel : DetailsBaseViewModel<IHometask>
     {
         public HoTaExplorerViewModel() : base() { }
 

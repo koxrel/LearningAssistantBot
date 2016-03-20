@@ -91,7 +91,7 @@ namespace LearningAssistant.ViewModels
         {
             if (!string.IsNullOrWhiteSpace(Message))
             {
-                BotWebRequest.Bot.SendBulkMessage(Message);
+                Factory.GetBot.SendBulkMessage(Message);
             }
             Message = string.Empty;
         }
@@ -115,10 +115,10 @@ namespace LearningAssistant.ViewModels
         {
             StartButEnabled = false;
             try
-            {                
-                BotWebRequest.OnError += BotError;
-                BotWebRequest.Bot.StartProcessing();
-                if (BotWebRequest.Bot.IsActive)
+            {
+                Factory.GetBot.OnError += BotError;
+                Factory.GetBot.StartProcessing();
+                if (Factory.GetBot.IsActive)
                 {
                     StatusLabel = "active";
                     StopButEnabled = true;
@@ -141,8 +141,8 @@ namespace LearningAssistant.ViewModels
         {            
             StopButEnabled = false;
             try {
-                BotWebRequest.Bot.CancelProcessing();
-                if (BotWebRequest.Bot.IsActive)
+                Factory.GetBot.CancelProcessing();
+                if (Factory.GetBot.IsActive)
                 {
                     StatusLabel = "active";
                     StopButEnabled = true;

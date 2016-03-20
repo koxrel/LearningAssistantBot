@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 using LearningAssistant.Classes;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.ViewModels
 {
-    class DeadlineExplorerViewModel : DetailsBaseViewModel<Deadline>
+    class DeadlineExplorerViewModel : DetailsBaseViewModel<IDeadline>
     {
         public DeadlineExplorerViewModel() : base() { }
 

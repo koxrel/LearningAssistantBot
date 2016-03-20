@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 using LearningAssistant.Classes;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.ViewModels
 {
-    class UserExplorerViewModel : DetailsBaseViewModel<User>
+    class UserExplorerViewModel : DetailsBaseViewModel<IUser>
     {
         public UserExplorerViewModel() : base() { }
 
