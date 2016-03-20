@@ -24,13 +24,9 @@ namespace LearningAssistant.TelegramBot.Classes
             }
         }
 
-        private static BotWebRequest _bot;
-
-        public static BotWebRequest Bot => _bot ?? (_bot = new BotWebRequest());
-
         public bool IsActive => _cts != null && !_cts.IsCancellationRequested;
 
-        public static event Action OnError;
+        public event Action OnError;
 
         private readonly string _token;
 
