@@ -55,9 +55,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextBuilderTests.cs" />
     <Compile Include="TextToColourConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearningAssistant.Database\LearningAssistant.Database.csproj">
+      <Project>{2441e834-fddd-4d4c-8901-319d69f026e9}</Project>
+      <Name>LearningAssistant.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LearningAssistant\LearningAssistant.csproj">
       <Project>{3E2F55F3-27C9-4C1A-A120-5CCBFCC48273}</Project>
       <Name>LearningAssistant</Name>
