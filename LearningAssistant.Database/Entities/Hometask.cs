@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LearningAssistant.Database.Entities
 {
-    public class Hometask
+    public class Hometask : IHometask
     {
         public int Id { get; set; }
         [Required]

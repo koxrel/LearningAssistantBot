@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LearningAssistant.Database.Entities
 {
-    public class Deadline
+    public class Deadline : IDeadline
     {
         public int Id { get; set; }
         [Required]
