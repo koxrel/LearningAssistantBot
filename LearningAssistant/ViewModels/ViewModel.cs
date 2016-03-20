@@ -22,6 +22,7 @@ namespace LearningAssistant.ViewModels
             ButtonOverviewUsersClick = new Command(OverviewUsers);
             ButtonSendClick = new Command(SendMessage);
             ButtonInfoClick = new Command((o)=> _nav.ShowInfo());
+            ButtonExitClick = new Command((o) => App.Current.Shutdown());
         }
 
         INavigator _nav;
@@ -34,6 +35,7 @@ namespace LearningAssistant.ViewModels
         public ICommand ButtonOverviewUsersClick { get; set; }
         public ICommand ButtonSendClick { get; set; }
         public ICommand ButtonInfoClick { get; set; }
+        public ICommand ButtonExitClick { get; set; }
 
         private string _status = "inactive";
 

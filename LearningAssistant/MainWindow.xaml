@@ -20,7 +20,8 @@
                     <MenuItem Background="Tomato" Header='Stop' Command="{Binding ButtonStopClick}"/>
                     <MenuItem Background="AliceBlue" Header='Overview deadlines' Command="{Binding ButtonOverviewDeadlinesClick}" />
                     <MenuItem Background="LemonChiffon" Header='Overview home tasks'  Command="{Binding ButtonOverviewHomeTasksClick}" />
-                    <MenuItem Visibility="Collapsed" Background="Gray" Header='Exit'/>
+                    <MenuItem Background="LightGray" Header='Overview users'  Command="{Binding ButtonOverviewUsersClick}" />
+                    <MenuItem Background="Gray" Header='Exit' Command="{Binding ButtonExitClick}"/>
                 </MenuItem>
                 <MenuItem FontSize="16" Header='_About'>
                     <MenuItem  Header='Info' Command="{Binding ButtonInfoClick}"/>
