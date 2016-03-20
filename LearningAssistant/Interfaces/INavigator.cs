@@ -4,5 +4,6 @@
     {
         void ErrorCaught(string ex);
         void NavigateTo(string name);
+        void ShowInfo();
     }
 }

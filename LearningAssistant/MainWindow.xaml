@@ -8,15 +8,11 @@
         xmlns:converters="clr-namespace:LearningAssistant.Converters"
         mc:Ignorable="d"
         Title="Dashboard: LearningAssistant bot" Height="291" Width="369" ResizeMode="CanMinimize" >
-
     <Window.Resources>
         <viewModels:ViewModel x:Key="MainViewModel"/>
         <converters:TextToColourConverter x:Key="TextToColour"/>
-
     </Window.Resources>
-
     <Grid DataContext="{Binding Source={StaticResource MainViewModel}}" >
-
         <DockPanel LastChildFill='False'>
             <Menu DockPanel.Dock='Top'  Margin="0,0,-135,0" Height="25">
                 <MenuItem FontSize="16" Header='_Actions'>
@@ -27,8 +23,7 @@
                     <MenuItem Visibility="Collapsed" Background="Gray" Header='Exit'/>
                 </MenuItem>
                 <MenuItem FontSize="16" Header='_About'>
-                    <MenuItem  Header='Info'/>
-
+                    <MenuItem  Header='Info' Command="{Binding ButtonInfoClick}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -64,9 +59,8 @@
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
-
         </TextBox>
-        <Button x:Name="Send" IsDefault="True" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="70,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
+        <Button x:Name="Send" FontSize="17" Background="Yellow" IsEnabled="{Binding ElementName=StopButt, Path=IsEnabled}"  Foreground="Red" Content="Send!" HorizontalAlignment="Left" Margin="70,177,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonSendClick}" Width="60" Height="30" Grid.Column="1"/>
         <Label FontSize="16" x:Name="UserNameLabel" Content="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,29,0,0" Grid.Row="1" Width="120" Height="31"/>
         <TextBlock FontSize="16"  HorizontalAlignment="Left" Margin="-2,34,0,0" Grid.Row="1" TextAlignment="Right" TextWrapping="Wrap" Text="User name:" VerticalAlignment="Top" Height="21" Width="92"/>
         <Grid.ColumnDefinitions>
@@ -77,9 +71,5 @@
             <RowDefinition Height="25*"/>
             <RowDefinition Height="237*"/>
         </Grid.RowDefinitions>
-
-
-
     </Grid>
-
 </Window>

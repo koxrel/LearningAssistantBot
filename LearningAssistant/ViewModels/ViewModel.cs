@@ -12,7 +12,8 @@ namespace LearningAssistant.ViewModels
     class ViewModel : INotifyPropertyChanged
     {
         public ViewModel()
-        {           
+        {
+            _nav = Factory.GetNavigator;        
             ButtonStartClick = new Command(StartBut);
             ButtonStopClick = new Command(StopBut);
             ButtonNewAssignmentClick = new Command(NABut);
@@ -20,9 +21,10 @@ namespace LearningAssistant.ViewModels
             ButtonOverviewHomeTasksClick = new Command(OverviewHomeTasks);
             ButtonOverviewUsersClick = new Command(OverviewUsers);
             ButtonSendClick = new Command(SendMessage);
+            ButtonInfoClick = new Command((o)=> _nav.ShowInfo());
         }
 
-        INavigator _nav = Factory.GetNavigator;
+        INavigator _nav;
         
         public ICommand ButtonStartClick { get; set; }
         public ICommand ButtonStopClick { get; set; }
@@ -31,6 +33,7 @@ namespace LearningAssistant.ViewModels
         public ICommand ButtonOverviewDeadlinesClick { get; set; }
         public ICommand ButtonOverviewUsersClick { get; set; }
         public ICommand ButtonSendClick { get; set; }
+        public ICommand ButtonInfoClick { get; set; }
 
         private string _status = "inactive";
 
