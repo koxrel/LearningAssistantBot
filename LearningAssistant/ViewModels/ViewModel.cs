@@ -44,6 +44,19 @@ namespace LearningAssistant.ViewModels
             }
         }
 
+        private string _bn = "Learning Assistant";
+
+        public string BotName
+        {
+            get { return _bn; }
+            set
+            {
+                _bn = value;
+                OnPropertyChanged("BotName");
+            }
+        }
+
+
         private bool _startbe = true;
 
         public bool StartButEnabled
