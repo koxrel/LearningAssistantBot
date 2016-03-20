@@ -2,15 +2,16 @@
 using System.Linq;
 using System.Text;
 using LearningAssistant.Database.Entities;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.Database.Classes
 {
     //The class and all its methods are made static since they do not rely on state
     public static class TextBuilder
     {
-        public static string Summarize(IEnumerable<Deadline> deadlines)
+        public static string Summarize(IEnumerable<IDeadline> deadlines)
         {
-            IEnumerable<Deadline> deadlinesEnumerated = deadlines?.ToArray();
+            IEnumerable<IDeadline> deadlinesEnumerated = deadlines?.ToArray();
             if (deadlinesEnumerated == null || !deadlinesEnumerated.Any())
                 return Info.NotFound;
 
@@ -24,7 +25,7 @@ namespace LearningAssistant.Database.Classes
             return sb.ToString();
         }
 
-        public static string Summarize(Hometask hometask)
+        public static string Summarize(IHometask hometask)
         {
             return hometask?.ToString() ?? Info.NotFound;
         }
