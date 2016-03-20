@@ -9,7 +9,6 @@ using LearningAssistant.TelegramBot.Classes;
 using LearningAssistant.TelegramBot.DTO;
 using LearningAssistant.TelegramBot.Interfaces;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
 {
