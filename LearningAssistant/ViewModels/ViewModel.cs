@@ -82,9 +82,12 @@ namespace LearningAssistant.ViewModels
 
         public void BotError()
         {
-           
+                       
             _nav.ErrorCaught("bot could not process requests");
+            Factory.GetBot.OnError -= BotError;
             StatusLabel = "inactive";
+            StartButEnabled = true;
+            StopButEnabled = false;
         }       
 
         public void SendMessage(object obj)
