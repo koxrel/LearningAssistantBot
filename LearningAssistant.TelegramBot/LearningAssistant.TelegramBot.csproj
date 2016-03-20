@@ -40,7 +40,8 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BotWebRequest.cs" />
+    <Compile Include="BotWebRequestImplementations\BotWebRequest.cs" />
+    <Compile Include="Interfaces\IBotWebRequest.cs" />
     <Compile Include="DTO\Chat.cs" />
     <Compile Include="DTO\Message.cs" />
     <Compile Include="DTO\Update.cs" />

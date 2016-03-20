@@ -5,12 +5,14 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using LearningAssistant.Database.Classes;
+using LearningAssistant.TelegramBot.Classes;
 using LearningAssistant.TelegramBot.DTO;
+using LearningAssistant.TelegramBot.Interfaces;
 using Newtonsoft.Json;
 
-namespace LearningAssistant.TelegramBot.Classes
+namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
 {
-    public class BotWebRequest
+    public class BotWebRequest : IBotWebRequest
     {
         private BotWebRequest()
         {
