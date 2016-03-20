@@ -46,7 +46,7 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
                 await _client.GetAsync($"https://api.telegram.org/bot{_token}/getupdates?offset={_lastUpdateId}");
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new HttpRequestException();
 
             var result = await response.Content.ReadAsStringAsync();
 
@@ -115,8 +115,20 @@ namespace LearningAssistant.TelegramBot.BotWebRequestImplementations
             catch (Exception)
             {
                 Factory.DisposeDataAccess();
+                CancelProcessing();
                 OnError?.Invoke();
             }
+        }
+
+        public async Task<string> GetBotName()
+        {
+            var response = await _client.GetAsync($"https://api.telegram.org/bot{_token}/getme");
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            var user = await Task<User>.Factory.StartNew(() => JsonConvert.DeserializeObject<User>(result));
+
+            return user.Username;
         }
 
         public void StartProcessing()
