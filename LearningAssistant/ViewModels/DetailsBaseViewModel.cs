@@ -16,12 +16,14 @@ namespace LearningAssistant.ViewModels
             ItemSet();
             ButtonAddClick = new Command(AddBut);
             ButtonRemoveClick = new Command(RemoveBut);
+            ButtonRefreshClick = new Command(RefreshGrid);
         }
 
         INavigator _nav;
 
         public ICommand ButtonAddClick { get; set; }
         public ICommand ButtonRemoveClick { get; set; }
+        public ICommand ButtonRefreshClick { get; set; }
 
         private IEnumerable<T> _items;
 
@@ -84,6 +86,7 @@ namespace LearningAssistant.ViewModels
         public abstract void RemoveBut(object obj);
         public abstract Task RefreshGrid();
         public abstract Task RefreshGrid(IDataAccess mta);
+        public async void RefreshGrid(object obj) { await RefreshGrid(); }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

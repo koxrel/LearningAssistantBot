@@ -52,6 +52,7 @@
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button Command="{Binding ButtonAddClick}" Name="buttonAdd" FontSize="16" IsEnabled="{Binding ButEnabled}" Background="LightGreen" Margin="5 3" >Add</Button>
             <Button Command="{Binding ButtonRemoveClick}" Name="buttonRemove" FontSize="16" IsEnabled="{Binding ButEnabled}" Background="Salmon" Margin="5 3">Remove</Button>
+            <Button Command="{Binding ButtonRefreshClick}" Name="buttonRefresh" FontSize="16" IsEnabled="{Binding ButEnabled}" Background="Aqua" Margin="5 3">Refresh</Button>
         </StackPanel>
        
     </Grid>
