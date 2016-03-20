@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.Database.Entities
 {

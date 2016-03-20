@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LearningAssistant.Database.Entities
+namespace LearningAssistant.Database.EntitiesInterfaces
 {
     public interface IHometask
     {

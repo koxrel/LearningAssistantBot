@@ -48,9 +48,9 @@
     <Compile Include="DataAccessImplementations\DataAccess.cs" />
     <Compile Include="Entities\Deadline.cs" />
     <Compile Include="Entities\Hometask.cs" />
-    <Compile Include="Interfaces\IDeadline.cs" />
-    <Compile Include="Interfaces\IHometask.cs" />
-    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="EntitiesInterfaces\IDeadline.cs" />
+    <Compile Include="EntitiesInterfaces\IHometask.cs" />
+    <Compile Include="EntitiesInterfaces\IUser.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Info.Designer.cs">
@@ -79,9 +79,7 @@
       <DependentUpon>201603011016078_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntitiesInterfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
