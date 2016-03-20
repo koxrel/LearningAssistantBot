@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.EntitiesInterfaces;
 
 namespace LearningAssistant.Database.Classes

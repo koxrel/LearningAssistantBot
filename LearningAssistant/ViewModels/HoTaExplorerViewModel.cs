@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using LearningAssistant.Classes;
-using LearningAssistant.Database.Entities;
 using LearningAssistant.Database.Interfaces;
 using LearningAssistant.Database.EntitiesInterfaces;
 

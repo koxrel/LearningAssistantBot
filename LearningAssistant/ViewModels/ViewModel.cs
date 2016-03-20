@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Windows.Input;
 using LearningAssistant.Classes;
 using LearningAssistant.Interfaces;
-using LearningAssistant.TelegramBot.BotWebRequestImplementations;
-using LearningAssistant.TelegramBot.Classes;
 using Factory = LearningAssistant.Classes.Factory;
 
 namespace LearningAssistant.ViewModels
