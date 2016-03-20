@@ -56,6 +56,18 @@ namespace LearningAssistant.ViewModels
             }
         }
 
+        private string _un = "Unknown";
+
+        public string UserName
+        {
+            get { return _un; }
+            set
+            {
+                _un = value;
+                OnPropertyChanged("UserName");
+            }
+        }
+
 
         private bool _startbe = true;
 
@@ -126,17 +138,20 @@ namespace LearningAssistant.ViewModels
             _nav.NavigateTo("DE");
         }
 
-        public void StartBut(object obj)
+        public async void StartBut(object obj)
         {
             StartButEnabled = false;
             try
             {
                 Factory.GetBot.OnError += BotError;
                 Factory.GetBot.StartProcessing();
+                await Factory.GetBot.GetBotName();
                 if (Factory.GetBot.IsActive)
                 {
                     StatusLabel = "active";
                     StopButEnabled = true;
+                    UserName = $"@{Factory.GetBot.BotUsername.ToLower()}";
+                    BotName = Factory.GetBot.BotName;
                 }
                 else
                 {
